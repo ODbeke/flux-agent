@@ -195,3 +195,43 @@ body {
 @keyframes drawLine {
   to { stroke-dashoffset: 0; }
 }
+
+.glossy-btn {
+  background: linear-gradient(135deg, var(--brand-primary) 0%, #3a5b8a 100%);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3);
+}
+
+.glossy-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.1) 40%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 60%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.5s;
+}
+
+.glossy-btn:hover::after {
+  transform: rotate(30deg) translate(20%, 20%);
+}
+
+.animate-heartbeat {
+  animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3); }
+  50% { transform: scale(1.05); box-shadow: 0 15px 40px rgba(74, 111, 165, 0.4); }
+  100% { transform: scale(1); box-shadow: 0 10px 30px rgba(74, 111, 165, 0.3); }
+}

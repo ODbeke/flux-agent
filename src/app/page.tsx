@@ -40,11 +40,6 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <div className="animate-reveal [animation-delay:200ms] opacity-0 flex items-center gap-2 px-3 py-1 rounded-full bg-gray-50 border border-gray-100 mb-8">
-          <Sparkles className="w-3.5 h-3.5 text-[#4A6FA5]" />
-          <span className="text-[10px] font-bold uppercase tracking-widest text-gray-500">Revolutionizing AI Provenance</span>
-        </div>
-        
         <h1 className="animate-reveal [animation-delay:400ms] opacity-0 font-poppins text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 max-w-4xl leading-[1.1]">
           Synthesize <span className="text-[#4A6FA5]">Intelligence.</span> <br/>
           Secure the <span className="text-gray-300">Truth.</span>
@@ -54,19 +49,19 @@ export default function LandingPage() {
           The ultimate synthesis layer for verifiable AI research. Generate insights with 0G Compute, archive permanently on 0G Storage, and own your intellectual capital.
         </p>
 
-        <div className="animate-reveal [animation-delay:800ms] opacity-0 flex flex-col sm:flex-row items-center gap-4">
+        <div className="animate-reveal [animation-delay:800ms] opacity-0 flex flex-col sm:flex-row items-center gap-5">
           <Link 
             href="/dashboard" 
-            className="w-full sm:w-auto px-8 py-4 bg-[#4A6FA5] text-white rounded-xl font-bold text-lg shadow-lg shadow-[#4A6FA5]/20 hover:scale-105 transition-all"
+            className="w-full sm:w-auto px-12 py-5 rounded-full font-bold text-xl glossy-btn text-white animate-heartbeat transition-all flex items-center justify-center gap-2"
           >
-            Get Started
+            Get Started <ArrowRight className="w-5 h-5" />
           </Link>
           <a 
             href="https://docs.0g.ai" 
             target="_blank" 
-            className="w-full sm:w-auto px-8 py-4 bg-white text-[#0f172a] border border-gray-200 rounded-xl font-bold text-lg hover:bg-gray-50 transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-10 py-5 bg-white text-gray-500 border border-gray-100 rounded-full font-bold text-lg hover:bg-gray-50 hover:text-[#4A6FA5] transition-all flex items-center justify-center gap-2"
           >
-            Read Documentation <ChevronRight className="w-5 h-5" />
+            Read Documentation
           </a>
         </div>
 
