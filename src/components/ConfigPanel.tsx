@@ -67,21 +67,21 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               <Code className="w-3.5 h-3.5 text-[#00f2fe]" /> Contract Address
             </span>
           </label>
-          <div className="relative">
+          <div className="flex gap-2">
             <input
               type="text"
               value={contractAddress}
               readOnly
               placeholder="0x96217aE0ee2737266F1cBF9A5539F0b4e99B0BEF"
-              className="glass-input text-[10px] font-mono w-full pr-12 cursor-default"
+              className="glass-input text-[10px] font-mono flex-1 cursor-default truncate"
             />
             <button
               type="button"
               onClick={handleCopy}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[#00f2fe] transition-colors"
+              className="p-2.5 rounded-lg glass-panel text-[var(--muted)] hover:text-[#00f2fe] flex items-center justify-center shrink-0"
               title="Copy Contract Address"
             >
-              {copied ? <Check className="w-3.5 h-3.5 text-[#10b981]" /> : <Copy className="w-3.5 h-3.5" />}
+              {copied ? <Check className="w-4 h-4 text-[#10b981]" /> : <Copy className="w-4 h-4" />}
             </button>
           </div>
           <p className="text-[10px] text-[var(--muted)]">
@@ -101,18 +101,18 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               Decentralized GPU
             </span>
           </label>
-          <div className="relative">
+          <div className="flex gap-2">
             <input
               type={showApiKey ? "text" : "password"}
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="0G_API_KEY_..."
-              className="glass-input text-[10px] font-mono w-full pr-12"
+              className="glass-input text-[10px] font-mono flex-1"
             />
             <button
               type="button"
               onClick={() => setShowApiKey(!showApiKey)}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+              className="p-2.5 rounded-lg glass-panel text-[var(--muted)] hover:text-[var(--foreground)] flex items-center justify-center shrink-0"
             >
               {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
@@ -174,18 +174,18 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                 </span>
               </span>
             </label>
-            <div className="relative">
+            <div className="flex gap-2">
               <input
                 type={showPrivateKey ? "text" : "password"}
                 value={privateKey}
                 onChange={(e) => setPrivateKey(e.target.value)}
                 placeholder="0xabcd1234..."
-                className="glass-input text-[10px] font-mono w-full pr-12"
+                className="glass-input text-[10px] font-mono flex-1"
               />
               <button
                 type="button"
                 onClick={() => setShowPrivateKey(!showPrivateKey)}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
+                className="p-2.5 rounded-lg glass-panel text-[var(--muted)] hover:text-[var(--foreground)] flex items-center justify-center shrink-0"
               >
                 {showPrivateKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
