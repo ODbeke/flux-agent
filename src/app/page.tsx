@@ -280,7 +280,7 @@ export default function Home() {
               </span>
             </h1>
             <p className="text-xs text-[#9ca3af]">
-              Verifiable AI logic synthesis combined with decentralized permanent indexing layers.
+              AI generates. 0G preserves. Chain verifies
             </p>
           </div>
         </div>
