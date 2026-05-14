@@ -26,13 +26,13 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
 }) => {
   return (
     <div className="glass-panel p-6 flex flex-col h-full sticky top-6">
-      <div className="flex items-center gap-3 border-b border-[rgba(255,255,255,0.08)] pb-4 mb-6">
+      <div className="flex items-center gap-3 border-b border-[var(--card-border)] pb-4 mb-6">
         <div className="p-2 rounded-lg bg-[rgba(0,242,254,0.1)] text-[#00f2fe]">
           <Layers className="w-5 h-5" />
         </div>
         <div>
-          <h2 className="font-semibold text-lg text-white">0G Network Explorer</h2>
-          <p className="text-xs text-[#9ca3af]">Mainnet Integration Flow (Chain ID: 16661)</p>
+          <h2 className="font-semibold text-lg text-[var(--foreground)]">0G Network Explorer</h2>
+          <p className="text-xs text-[var(--muted)]">Mainnet Integration Flow (Chain ID: 16661)</p>
         </div>
       </div>
 
@@ -52,10 +52,10 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             <div className="absolute left-2.5 top-6 bottom-[-16px] w-[2px] bg-gradient-to-b from-[#374151] to-transparent" />
           </div>
           <div className="flex-1">
-            <span className="text-sm font-medium text-white flex items-center gap-1.5">
+            <span className="text-sm font-medium text-[var(--foreground)] flex items-center gap-1.5">
               <Cpu className="w-4 h-4 text-[#00f2fe]" /> 1. AI Inference Pipeline
             </span>
-            <p className="text-xs text-[#9ca3af] mt-0.5">
+            <p className="text-xs text-[var(--muted)] mt-0.5">
               {isSynthesizing 
                 ? "Synthesizing topic weights via specified compute provider..." 
                 : result || isUploading 
@@ -78,10 +78,10 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             <div className="absolute left-2.5 top-6 bottom-[-16px] w-[2px] bg-gradient-to-b from-[#374151] to-transparent" />
           </div>
           <div className="flex-1">
-            <span className="text-sm font-medium text-white flex items-center gap-1.5">
+            <span className="text-sm font-medium text-[var(--foreground)] flex items-center gap-1.5">
               <Database className="w-4 h-4 text-[#8b5cf6]" /> 2. Permanent 0G Storage
             </span>
-            <p className="text-xs text-[#9ca3af] mt-0.5">
+            <p className="text-xs text-[var(--muted)] mt-0.5">
               {isUploading && !result 
                 ? currentStep || "Calculating Merkle tree proof roots..." 
                 : result 
@@ -89,8 +89,8 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
                 : "Ready to stage file blob sequence."}
             </p>
             {result && (
-              <div className="mt-2 p-2 rounded bg-[rgba(0,0,0,0.3)] border border-[rgba(255,255,255,0.05)] font-mono text-[11px] break-all text-[#00f2fe]">
-                <span className="text-[#6b7280] block text-[9px] uppercase">Content Hash:</span>
+              <div className="mt-2 p-2 rounded bg-[var(--container-bg)] border border-[var(--card-border)] font-mono text-[11px] break-all text-[#00f2fe]">
+                <span className="text-[var(--muted)] block text-[9px] uppercase">Content Hash:</span>
                 {result.contentHash}
               </div>
             )}
@@ -107,10 +107,10 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             )}
           </div>
           <div className="flex-1">
-            <span className="text-sm font-medium text-white flex items-center gap-1.5">
+            <span className="text-sm font-medium text-[var(--foreground)] flex items-center gap-1.5">
               <ShieldCheck className="w-4 h-4 text-[#10b981]" /> 3. Agent ID Verifiable Anchor
             </span>
-            <p className="text-xs text-[#9ca3af] mt-0.5">
+            <p className="text-xs text-[var(--muted)] mt-0.5">
               {result 
                 ? "ERC-7857 digital identity successfully registered onchain." 
                 : "Pending final block inclusion state."}
@@ -150,18 +150,18 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
             href={result.explorerLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex flex-col p-3 rounded-lg bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.06)] hover:border-[#00f2fe] transition-all group gap-2"
+            className="flex flex-col p-3 rounded-lg bg-[rgba(255,255,255,0.03)] border border-[var(--card-border)] hover:bg-[rgba(255,255,255,0.06)] hover:border-[#00f2fe] transition-all group gap-2"
           >
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2.5">
                 <ShieldCheck className="w-4 h-4 text-[#00f2fe] shrink-0" />
-                <span className="text-xs font-medium text-white">Verify on 0G Chainscan</span>
+                <span className="text-xs font-medium text-[var(--foreground)]">Verify on 0G Chainscan</span>
               </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#9ca3af] group-hover:text-[#00f2fe]" />
+              <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[#00f2fe]" />
             </div>
             
-            <div className="mt-1 p-2 rounded bg-black/40 border border-white/5 font-mono text-[9px] text-[#00f2fe] leading-tight flex flex-col gap-1">
-              <span className="text-[#6b7280] uppercase">On-Chain Transaction Receipt:</span>
+            <div className="mt-1 p-2 rounded bg-[var(--container-bg)] border border-[var(--card-border)] font-mono text-[9px] text-[#00f2fe] leading-tight flex flex-col gap-1">
+              <span className="text-[var(--muted)] uppercase">On-Chain Transaction Receipt:</span>
               <div className="break-all opacity-80">
                 {result.mintTxHash}
               </div>

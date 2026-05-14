@@ -12,8 +12,12 @@ import {
   Layers, 
   RefreshCw,
   FileText,
-  ShieldCheck
+  FileText,
+  ShieldCheck,
+  Sun,
+  Moon
 } from "lucide-react";
+import { useEffect } from "react";
 import { ConfigPanel } from "../components/ConfigPanel";
 import { ExplorerView } from "../components/ExplorerView";
 import { ResearchReportResponse } from "../services/aiService";
@@ -160,7 +164,17 @@ export default function Home() {
   const [currentStep, setCurrentStep] = useState("");
   const [reportData, setReportData] = useState<ResearchReportResponse | null>(null);
   const [uploadResult, setUploadResult] = useState<StorageUploadResult | null>(null);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [errorMsg, setErrorMsg] = useState("");
+
+  // Apply theme to document
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme(prev => prev === "dark" ? "light" : "dark");
+  };
 
   // Predefined suggestion triggers
   const suggestions = [
@@ -273,32 +287,42 @@ export default function Home() {
             />
           </div>
           <div>
-            <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-white flex items-center gap-2.5">
+            <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2.5">
               Flux Agent
               <span className="text-xs px-2 py-0.5 rounded-full bg-[rgba(0,242,254,0.1)] text-[#00f2fe] border border-[rgba(0,242,254,0.2)] font-mono font-medium">
                 0G Mainnet Vault
               </span>
             </h1>
-            <p className="text-xs text-[#9ca3af]">
+            <p className="text-xs text-[var(--muted)]">
               AI generates. 0G preserves. Chain verifies
             </p>
           </div>
         </div>
 
-        <div className="flex items-center gap-3 text-xs text-[#9ca3af] bg-[rgba(255,255,255,0.02)] px-3 py-1.5 rounded-lg border border-[rgba(255,255,255,0.05)]">
-          <span className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block animate-ping" />
-            EVM ID: <strong className="text-white font-mono">16661</strong>
-          </span>
-          <span className="text-[#374151]">|</span>
-          <a 
-            href="https://storagescan.0g.ai" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="hover:text-[#00f2fe] transition-colors flex items-center gap-1"
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-3 text-xs text-[var(--muted)] bg-[rgba(255,255,255,0.02)] px-3 py-1.5 rounded-lg border border-[var(--card-border)]">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block animate-ping" />
+              EVM ID: <strong className="text-[var(--foreground)] font-mono">16661</strong>
+            </span>
+            <span className="text-[var(--muted)]">|</span>
+            <a 
+              href="https://storagescan.0g.ai" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="hover:text-[#00f2fe] transition-colors flex items-center gap-1"
+            >
+              StorageScan <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+
+          <button 
+            onClick={toggleTheme}
+            className="p-2 rounded-lg glass-panel hover:border-[#00f2fe]/40 text-[#9ca3af] hover:text-[#00f2fe] transition-all"
+            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
-            StorageScan <ExternalLink className="w-3 h-3" />
-          </a>
+            {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
         </div>
       </header>
 
@@ -323,7 +347,7 @@ export default function Home() {
           {/* Query Instantiation Card */}
           <div className="glass-panel p-6">
             <form onSubmit={handleQuerySubmit} className="flex flex-col gap-4">
-              <label htmlFor="research-query" className="text-xs font-semibold text-white uppercase tracking-wider flex items-center gap-2 text-[#00f2fe]">
+              <label htmlFor="research-query" className="text-xs font-semibold text-[var(--foreground)] uppercase tracking-wider flex items-center gap-2 text-[#00f2fe]">
                 <Search className="w-3.5 h-3.5" /> Define Research Topic or Thesis
               </label>
               
@@ -430,7 +454,7 @@ export default function Home() {
             {/* Bottom Proof Stamp Footer */}
             {uploadResult && (
               <div className="mt-4 pt-3 border-t border-[rgba(255,255,255,0.05)] flex items-center justify-between text-[11px] bg-[rgba(0,242,254,0.02)] p-2.5 rounded-lg border border-[rgba(0,242,254,0.1)]">
-                <span className="text-[#9ca3af] flex items-center gap-1.5">
+                <span className="text-[var(--muted)] flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#10b981]" /> Agent Token Issued:
                 </span>
                 <strong className="text-[#00f2fe] font-mono font-bold tracking-wide">
@@ -456,10 +480,10 @@ export default function Home() {
       <section className="mt-20 pt-10 border-t border-[rgba(255,255,255,0.06)]">
         <div className="flex flex-col md:flex-row items-end justify-between gap-6 mb-10">
           <div className="max-w-xl">
-            <h2 className="text-2xl font-bold text-white mb-2 flex items-center gap-2">
+            <h2 className="text-2xl font-bold text-[var(--foreground)] mb-2 flex items-center gap-2">
               <Search className="w-6 h-6 text-[#00f2fe]" /> 0G Agent Registry
             </h2>
-            <p className="text-[#9ca3af] text-sm">
+            <p className="text-[var(--muted)] text-sm">
               Verify the authenticity of any Agent ID generated on the network. Each ID represents a unique, cryptographically anchored AI research finding.
             </p>
           </div>
@@ -488,11 +512,11 @@ export default function Home() {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
-                <label className="text-[10px] text-[#6b7280] uppercase block mb-1">Agent ID</label>
-                <div className="text-white font-mono text-sm">{searchResult.agentId}</div>
+                <label className="text-[10px] text-[var(--muted)] uppercase block mb-1">Agent ID</label>
+                <div className="text-[var(--foreground)] font-mono text-sm">{searchResult.agentId}</div>
               </div>
               <div className="md:col-span-2">
-                <label className="text-[10px] text-[#6b7280] uppercase block mb-1">Content Fingerprint</label>
+                <label className="text-[10px] text-[var(--muted)] uppercase block mb-1">Content Fingerprint</label>
                 <div className="text-[#00f2fe] font-mono text-xs break-all">{searchResult.contentHash}</div>
               </div>
             </div>

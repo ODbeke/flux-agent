@@ -44,8 +44,8 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             <Settings2 className="w-5 h-5" />
           </div>
           <div>
-            <h2 className="font-semibold text-lg text-white">Mainnet Setup</h2>
-            <p className="text-xs text-[#9ca3af]">Live inference & wallet credentials</p>
+            <h2 className="font-semibold text-lg text-[var(--foreground)]">Mainnet Setup</h2>
+            <p className="text-xs text-[var(--muted)]">Live inference & wallet credentials</p>
           </div>
         </div>
       </div>
@@ -53,7 +53,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
       <div className="flex flex-col gap-5 flex-1">
         {/* Agent ID Standard Registry Contract Address */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-medium text-[#d1d5db] flex items-center justify-between">
+          <label className="text-xs font-medium text-[var(--foreground)] flex items-center justify-between">
             <span className="flex items-center gap-1.5">
               <Code className="w-3.5 h-3.5 text-[#00f2fe]" /> Standard Registry Address
             </span>
@@ -73,7 +73,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
 
         {/* 0G Compute API Key */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-medium text-[#d1d5db] flex items-center justify-between">
+          <label className="text-xs font-medium text-[var(--foreground)] flex items-center justify-between">
             <span className="flex items-center gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-[#00f2fe]" /> 0G Compute API Key
             </span>
@@ -104,7 +104,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
 
         {/* Wallet Connection / Private Key Section */}
         <div className="flex flex-col gap-2">
-          <label className="text-xs font-medium text-[#d1d5db] flex items-center justify-between">
+          <label className="text-xs font-medium text-[var(--foreground)] flex items-center justify-between">
             <span className="flex items-center gap-1.5">
               <Wallet className="w-3.5 h-3.5 text-[#10b981]" /> Signer Authorization
             </span>
@@ -144,7 +144,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
 
           {/* Private Key — always visible for full storage replication */}
           <div className="mt-1">
-            <label className="text-xs font-medium text-[#d1d5db] flex items-center justify-between mb-1.5">
+            <label className="text-xs font-medium text-[var(--foreground)] flex items-center justify-between mb-1.5">
               <span className="flex items-center gap-1.5">
                 <Key className="w-3.5 h-3.5 text-[#f59e0b]" /> Private Key
                 <span className="text-[9px] text-[#f59e0b] bg-[rgba(245,158,11,0.1)] px-1.5 py-0.5 rounded border border-[rgba(245,158,11,0.2)]">
