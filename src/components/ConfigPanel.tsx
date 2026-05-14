@@ -9,7 +9,9 @@ import {
   EyeOff,
   Sliders,
   CheckCircle2,
-  Cpu
+  Cpu,
+  Copy,
+  Check
 } from "lucide-react";
 
 interface ConfigPanelProps {
@@ -35,6 +37,13 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
 }) => {
   const [showApiKey, setShowApiKey] = useState(false);
   const [showPrivateKey, setShowPrivateKey] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(contractAddress);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <div className="glass-panel p-6 flex flex-col h-full">
@@ -58,13 +67,23 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               <Code className="w-3.5 h-3.5 text-[#00f2fe]" /> Contract Address
             </span>
           </label>
-          <input
-            type="text"
-            value={contractAddress}
-            onChange={(e) => setContractAddress(e.target.value)}
-            placeholder="0x96217aE0ee2737266F1cBF9A5539F0b4e99B0BEF"
-            className="glass-input text-xs font-mono"
-          />
+          <div className="relative">
+            <input
+              type="text"
+              value={contractAddress}
+              readOnly
+              placeholder="0x96217aE0ee2737266F1cBF9A5539F0b4e99B0BEF"
+              className="glass-input text-xs font-mono w-full pr-9 cursor-default"
+            />
+            <button
+              type="button"
+              onClick={handleCopy}
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[#00f2fe] transition-colors"
+              title="Copy Contract Address"
+            >
+              {copied ? <Check className="w-3.5 h-3.5 text-[#10b981]" /> : <Copy className="w-3.5 h-3.5" />}
+            </button>
+          </div>
           <p className="text-[10px] text-[var(--muted)]">
             The specific mainnet smart contract anchoring findings to unique Agent ID tokens.
           </p>
