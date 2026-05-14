@@ -97,7 +97,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             <span className="flex items-center gap-1.5">
               <Cpu className="w-3.5 h-3.5 text-[#00f2fe]" /> 0G Compute API Key
             </span>
-            <span className="text-[10px] text-[#00f2fe] bg-[rgba(0,242,254,0.1)] px-1.5 py-0.5 rounded border border-[rgba(0,242,254,0.2)]">
+            <span className="text-[10px] text-[var(--primary-glow)] bg-[rgba(0,242,254,0.1)] px-1.5 py-0.5 rounded border border-[rgba(0,242,254,0.2)]">
               Decentralized GPU
             </span>
           </label>
@@ -118,7 +118,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             </button>
           </div>
           <p className="text-[10px] text-[var(--muted)]">
-            Paste your API key from the <a href="https://pc.0g.ai" target="_blank" rel="noopener noreferrer" className="text-[#00f2fe] hover:underline">pc.0g.ai dashboard</a> to execute verifiable, decentralized research.
+            Paste your API key from the <a href="https://pc.0g.ai" target="_blank" rel="noopener noreferrer" className="text-[var(--primary-glow)] font-bold hover:underline">pc.0g.ai dashboard</a> to execute verifiable, decentralized research.
           </p>
         </div>
 
