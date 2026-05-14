@@ -55,9 +55,8 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
         <div className="flex flex-col gap-2">
           <label className="text-xs font-medium text-[var(--foreground)] flex items-center justify-between">
             <span className="flex items-center gap-1.5">
-              <Code className="w-3.5 h-3.5 text-[#00f2fe]" /> Standard Registry Address
+              <Code className="w-3.5 h-3.5 text-[#00f2fe]" /> Contract Address
             </span>
-            <span className="text-[10px] text-[var(--muted)]">ERC-7857 Target</span>
           </label>
           <input
             type="text"
