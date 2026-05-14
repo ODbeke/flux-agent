@@ -307,9 +307,6 @@ export default function Home() {
           <div>
             <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2.5 font-[family-name:var(--font-roboto)]">
               Flux Agent
-              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(0,242,254,0.1)] text-[var(--primary-glow)] border border-[rgba(0,242,254,0.2)] font-mono font-bold uppercase tracking-wider">
-                0G Mainnet
-              </span>
             </h1>
             <p className="text-xs text-[var(--muted)]">
               AI generates. 0G preserves. Chain verifies
@@ -319,9 +316,11 @@ export default function Home() {
 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3 text-xs text-[var(--muted)] bg-[rgba(255,255,255,0.02)] px-3 py-1.5 rounded-lg border border-[var(--card-border)]">
-            <span className="flex items-center gap-1.5">
-              <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block animate-ping" />
-              <span className="font-medium text-[var(--foreground)]">Mainnet Active</span>
+            <span className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block animate-ping shrink-0" />
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(0,242,254,0.1)] text-[var(--primary-glow)] border border-[rgba(0,242,254,0.2)] font-mono font-bold uppercase tracking-wider">
+                0G Mainnet
+              </span>
             </span>
             <span className="text-[var(--card-border)]">|</span>
             <a 
