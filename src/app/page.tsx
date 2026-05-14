@@ -12,7 +12,6 @@ import {
   Layers, 
   RefreshCw,
   FileText,
-  FileText,
   ShieldCheck,
   Sun,
   Moon
