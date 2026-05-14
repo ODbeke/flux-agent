@@ -175,12 +175,31 @@ export default function Home() {
     setTheme(prev => prev === "dark" ? "light" : "dark");
   };
 
-  // Predefined suggestion triggers
-  const suggestions = [
+  // Dynamic suggestion triggers with auto-shuffle
+  const ALL_SUGGESTIONS = [
     "0G Permanent Data Scalability",
     "DePIN compute resource allocation models",
-    "Deep Liquidity Staking protocols on 0G"
+    "Deep Liquidity Staking protocols on 0G",
+    "Verifiable AI Inference pipeline",
+    "EVM-compatible storage anchoring",
+    "Decentralized GPU resource mapping",
+    "Cross-chain identity verification",
+    "Merkle Tree root validation",
+    "Proof of Data Availability consensus",
+    "Decentralized reasoning synthesis"
   ];
+
+  const [displaySuggestions, setDisplaySuggestions] = useState<string[]>([]);
+
+  useEffect(() => {
+    const shuffle = () => {
+      const shuffled = [...ALL_SUGGESTIONS].sort(() => Math.random() - 0.5);
+      setDisplaySuggestions(shuffled.slice(0, 3));
+    };
+    shuffle();
+    const interval = setInterval(shuffle, 10000);
+    return () => clearInterval(interval);
+  }, []);
 
   const connectWallet = async () => {
     if (typeof window !== "undefined" && (window as any).ethereum) {
@@ -286,10 +305,10 @@ export default function Home() {
             />
           </div>
           <div>
-            <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2.5">
+            <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2.5 font-[family-name:var(--font-roboto)]">
               Flux Agent
-              <span className="text-xs px-2 py-0.5 rounded-full bg-[rgba(0,242,254,0.1)] text-[#00f2fe] border border-[rgba(0,242,254,0.2)] font-mono font-medium">
-                0G Mainnet Vault
+              <span className="text-[10px] px-2 py-0.5 rounded-full bg-[rgba(0,242,254,0.1)] text-[var(--primary-glow)] border border-[rgba(0,242,254,0.2)] font-mono font-bold uppercase tracking-wider">
+                0G Mainnet
               </span>
             </h1>
             <p className="text-xs text-[var(--muted)]">
@@ -302,9 +321,9 @@ export default function Home() {
           <div className="flex items-center gap-3 text-xs text-[var(--muted)] bg-[rgba(255,255,255,0.02)] px-3 py-1.5 rounded-lg border border-[var(--card-border)]">
             <span className="flex items-center gap-1.5">
               <span className="w-2 h-2 rounded-full bg-[#10b981] inline-block animate-ping" />
-              EVM ID: <strong className="text-[var(--foreground)] font-mono">16661</strong>
+              <span className="font-medium text-[var(--foreground)]">Mainnet Active</span>
             </span>
-            <span className="text-[var(--muted)]">|</span>
+            <span className="text-[var(--card-border)]">|</span>
             <a 
               href="https://storagescan.0g.ai" 
               target="_blank" 
@@ -378,10 +397,10 @@ export default function Home() {
             {/* Quick Trigger Topic Suggestions */}
             <div className="mt-4 pt-3 border-t border-[var(--card-border)]">
               <span className="text-[10px] text-[var(--muted)] block mb-2 font-medium uppercase tracking-wider">
-                Or trigger recommended demo vectors:
+                Search suggestions:
               </span>
-              <div className="flex flex-wrap gap-2">
-                {suggestions.map((s, idx) => (
+              <div className="flex flex-wrap gap-2 transition-all duration-500">
+                {displaySuggestions.map((s, idx) => (
                   <button
                     key={idx}
                     type="button"
