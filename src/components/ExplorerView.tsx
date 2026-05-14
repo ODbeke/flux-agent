@@ -182,16 +182,16 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
               <ExternalLink className="w-3.5 h-3.5 text-[#9ca3af] group-hover:text-[#8b5cf6]" />
             </div>
             
-            <div className="mt-1 p-2 rounded bg-black/40 border border-white/5 font-mono text-[9px] text-[#8b5cf6] leading-tight flex flex-col gap-1">
-              <span className="text-[#6b7280] uppercase">Storage Layer Index:</span>
+            <div className="mt-1 p-2 rounded bg-[var(--container-bg)] border border-[var(--card-border)] font-mono text-[9px] text-[#8b5cf6] leading-tight flex flex-col gap-1">
+              <span className="text-[var(--muted)] uppercase">Storage Layer Index:</span>
               <div className="break-all opacity-80">
                 {result.storageTxHash}
               </div>
             </div>
           </a>
 
-          <div className="p-3 rounded-lg bg-[rgba(0,0,0,0.2)] border border-white/5">
-            <p className="text-[9px] text-[#6b7280] italic">
+          <div className="p-3 rounded-lg bg-[var(--container-bg)] border border-[var(--card-border)]">
+            <p className="text-[9px] text-[var(--muted)] italic">
               Verification Successful: Your Agent ID is minted on the EVM layer, and the content blob has been anchored to the decentralized 0G Storage nodes.
             </p>
           </div>

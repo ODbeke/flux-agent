@@ -61,7 +61,7 @@ const renderMarkdownLine = (line: string, idx: number) => {
   if (trimmed.startsWith("- ") || trimmed.startsWith("* ")) {
     const content = trimmed.replace(/^[-*]\s+/, "");
     return (
-      <li key={idx} className="text-xs text-[#d1d5db] ml-4 list-disc my-1 leading-relaxed">
+      <li key={idx} className="text-xs text-[var(--muted)] ml-4 list-disc my-1 leading-relaxed">
         {renderInlineMarkdown(content)}
       </li>
     );
@@ -76,7 +76,7 @@ const renderMarkdownLine = (line: string, idx: number) => {
     return (
       <div key={idx} className="grid grid-cols-3 gap-2 py-1.5 px-3 border-b border-[rgba(255,255,255,0.04)] text-xs even:bg-[rgba(255,255,255,0.01)]">
         {cells.map((cell, cIdx) => (
-          <span key={cIdx} className={cIdx === 0 ? "font-semibold text-white" : "text-[#9ca3af]"}>
+          <span key={cIdx} className={cIdx === 0 ? "font-semibold text-[var(--foreground)]" : "text-[var(--muted)]"}>
             {renderInlineMarkdown(cell)}
           </span>
         ))}
@@ -86,7 +86,7 @@ const renderMarkdownLine = (line: string, idx: number) => {
 
   // Standard Paragraph
   return (
-    <p key={idx} className="text-xs text-[#d1d5db] my-2 leading-relaxed">
+    <p key={idx} className="text-xs text-[var(--muted)] my-2 leading-relaxed">
       {renderInlineMarkdown(trimmed)}
     </p>
   );
@@ -317,7 +317,7 @@ export default function Home() {
 
           <button 
             onClick={toggleTheme}
-            className="p-2 rounded-lg glass-panel hover:border-[#00f2fe]/40 text-[#9ca3af] hover:text-[#00f2fe] transition-all"
+            className="p-2 rounded-lg glass-panel hover:border-[#00f2fe]/40 text-[var(--muted)] hover:text-[#00f2fe] transition-all"
             title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
             {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
@@ -376,8 +376,8 @@ export default function Home() {
             </form>
 
             {/* Quick Trigger Topic Suggestions */}
-            <div className="mt-4 pt-3 border-t border-[rgba(255,255,255,0.05)]">
-              <span className="text-[10px] text-[#6b7280] block mb-2 font-medium uppercase tracking-wider">
+            <div className="mt-4 pt-3 border-t border-[var(--card-border)]">
+              <span className="text-[10px] text-[var(--muted)] block mb-2 font-medium uppercase tracking-wider">
                 Or trigger recommended demo vectors:
               </span>
               <div className="flex flex-wrap gap-2">
@@ -386,7 +386,7 @@ export default function Home() {
                     key={idx}
                     type="button"
                     onClick={() => handleSuggestionClick(s)}
-                    className="text-left text-xs bg-[rgba(255,255,255,0.02)] hover:bg-[rgba(0,242,254,0.08)] border border-[rgba(255,255,255,0.06)] hover:border-[#00f2fe] text-[#d1d5db] hover:text-white transition-all py-1.5 px-3 rounded-lg flex items-center gap-1.5 shrink-0"
+                    className="text-left text-xs bg-[var(--container-bg)] hover:bg-[rgba(0,242,254,0.08)] border border-[var(--card-border)] hover:border-[#00f2fe] text-[var(--muted)] hover:text-[var(--foreground)] transition-all py-1.5 px-3 rounded-lg flex items-center gap-1.5 shrink-0"
                   >
                     <Compass className="w-3 h-3 text-[#8b5cf6]" /> {s}
                   </button>
@@ -397,10 +397,10 @@ export default function Home() {
 
           {/* Generated Markdown Structured Findings Layout Viewport */}
           <div className="glass-panel p-6 flex-1 flex flex-col min-h-[400px]">
-            <div className="flex items-center justify-between border-b border-[rgba(255,255,255,0.08)] pb-3 mb-4">
+            <div className="flex items-center justify-between border-b border-[var(--card-border)] pb-3 mb-4">
               <div className="flex items-center gap-2">
                 <FileText className="w-4 h-4 text-[#00f2fe]" />
-                <h3 className="font-semibold text-sm text-white">Synthesized Protocol Archive</h3>
+                <h3 className="font-semibold text-sm text-[var(--foreground)]">Synthesized Protocol Archive</h3>
               </div>
               
               {reportData && (
@@ -420,17 +420,17 @@ export default function Home() {
                   <p className="text-xs text-[#fca5a5] leading-relaxed">
                     {errorMsg}
                   </p>
-                  <span className="text-[10px] text-[#9ca3af] block mt-3">
+                  <span className="text-[10px] text-[var(--muted)] block mt-3">
                     Please specify a valid live 0G Compute API key and funded EVM private key (or connect wallet) in the setup panel.
                   </span>
                 </div>
               ) : isSynthesizing ? (
                 <div className="flex flex-col items-center justify-center flex-1 py-12 gap-3 text-center">
                   <Cpu className="w-10 h-10 text-[#00f2fe] animate-bounce" />
-                  <span className="text-xs text-white font-medium animate-pulse">
+                  <span className="text-xs text-[var(--foreground)] font-medium animate-pulse">
                     Ingesting active mesh weights & mapping protocol state...
                   </span>
-                  <p className="text-[10px] text-[#6b7280] max-w-xs">
+                  <p className="text-[10px] text-[var(--muted)] max-w-xs">
                     Calling LLM reasoning backend to structure professional executive summaries.
                   </p>
                 </div>
@@ -440,10 +440,10 @@ export default function Home() {
                   {reportData.markdown.split("\n").map((line, lIdx) => renderMarkdownLine(line, lIdx))}
                 </div>
               ) : (
-                <div className="flex flex-col items-center justify-center flex-1 py-16 text-center border border-dashed border-[rgba(255,255,255,0.04)] rounded-xl my-auto">
+                <div className="flex flex-col items-center justify-center flex-1 py-16 text-center border border-dashed border-[var(--card-border)] rounded-xl my-auto">
                   <Database className="w-8 h-8 text-[#374151] mb-3" />
-                  <span className="text-xs font-medium text-[#6b7280]">Vault Workspace Vacant</span>
-                  <p className="text-[11px] text-[#4b5563] max-w-sm mt-1">
+                  <span className="text-xs font-medium text-[var(--muted)]">Vault Workspace Vacant</span>
+                  <p className="text-[11px] text-[var(--muted)] opacity-80 max-w-sm mt-1">
                     Once requested, structural AI output parameters and verification hashes will populate permanently in this viewport.
                   </p>
                 </div>
@@ -507,7 +507,7 @@ export default function Home() {
               <span className="text-[#00f2fe] text-xs font-mono font-bold flex items-center gap-2">
                 <ShieldCheck className="w-4 h-4" /> VERIFIED AGENT IDENTITY
               </span>
-              <button onClick={() => setSearchResult(null)} className="text-[#6b7280] hover:text-white text-xs">Clear</button>
+              <button onClick={() => setSearchResult(null)} className="text-[var(--muted)] hover:text-[var(--foreground)] text-xs">Clear</button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div>
@@ -540,8 +540,8 @@ export default function Home() {
                   </div>
                   <span className="text-[9px] text-[#10b981] font-bold px-1.5 py-0.5 rounded bg-[#10b981]/10 border border-[#10b981]/20">LIVE</span>
                 </div>
-                <h3 className="text-sm font-bold text-white mb-1">{agent.agentId}</h3>
-                <p className="text-[10px] text-[#6b7280] mb-4 truncate font-mono">{agent.contentHash}</p>
+                <h3 className="text-sm font-bold text-[var(--foreground)] mb-1">{agent.agentId}</h3>
+                <p className="text-[10px] text-[var(--muted)] mb-4 truncate font-mono">{agent.contentHash}</p>
                 <button 
                   onClick={() => {
                     setSearchQuery(agent.agentId);
@@ -555,18 +555,18 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div className="text-center py-20 bg-[rgba(255,255,255,0.02)] rounded-2xl border border-dashed border-[rgba(255,255,255,0.05)]">
+          <div className="text-center py-20 bg-[var(--container-bg)] rounded-2xl border border-dashed border-[var(--card-border)]">
             <Database className="w-10 h-10 text-[#374151] mx-auto mb-4" />
-            <p className="text-[#6b7280] text-sm">No agents registered in this session yet.</p>
-            <p className="text-[11px] text-[#4b5563] mt-1">Start a research query to mint your first verifiable Agent ID.</p>
+            <p className="text-[var(--muted)] text-sm">No agents registered in this session yet.</p>
+            <p className="text-[11px] text-[var(--muted)] opacity-70 mt-1">Start a research query to mint your first verifiable Agent ID.</p>
           </div>
         )}
       </section>
 
       {/* Premium Footer Layout */}
-      <footer className="mt-12 pt-6 border-t border-[rgba(255,255,255,0.06)] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[#6b7280]">
+      <footer className="mt-12 pt-6 border-t border-[var(--card-border)] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
         <div>
-          <span className="text-[#9ca3af] font-medium">Flux Agent Protocol</span> — Built for the 0G Mainnet Showcase
+          <span className="text-[var(--muted)] font-medium">Flux Agent Protocol</span> — Built for the 0G Mainnet Showcase
         </div>
         <div className="flex items-center gap-4">
           <a href="https://docs.0g.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">

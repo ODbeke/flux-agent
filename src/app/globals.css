@@ -16,15 +16,15 @@
 
 [data-theme="light"] {
   --background: #f8fafc;
-  --foreground: #0f172a;
+  --foreground: #020617;
   --card-bg: rgba(255, 255, 255, 0.7);
-  --card-border: rgba(15, 23, 42, 0.08);
-  --input-bg: rgba(255, 255, 255, 0.9);
-  --primary-glow: #0ea5e9;
-  --secondary-glow: #6366f1;
+  --card-border: rgba(15, 23, 42, 0.12);
+  --input-bg: rgba(255, 255, 255, 0.95);
+  --primary-glow: #0284c7;
+  --secondary-glow: #4f46e5;
   --accent-purple: #7c3aed;
   --accent-cyan: #0891b2;
-  --muted: #64748b;
+  --muted: #475569;
   --container-bg: rgba(15, 23, 42, 0.05);
 }
 

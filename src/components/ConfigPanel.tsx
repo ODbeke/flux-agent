@@ -38,7 +38,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
 
   return (
     <div className="glass-panel p-6 flex flex-col h-full">
-      <div className="flex items-center justify-between border-b border-[rgba(255,255,255,0.08)] pb-4 mb-6">
+      <div className="flex items-center justify-between border-b border-[var(--card-border)] pb-4 mb-6">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-[rgba(139,92,246,0.1)] text-[#8b5cf6]">
             <Settings2 className="w-5 h-5" />
@@ -57,7 +57,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             <span className="flex items-center gap-1.5">
               <Code className="w-3.5 h-3.5 text-[#00f2fe]" /> Standard Registry Address
             </span>
-            <span className="text-[10px] text-[#6b7280]">ERC-7857 Target</span>
+            <span className="text-[10px] text-[var(--muted)]">ERC-7857 Target</span>
           </label>
           <input
             type="text"
@@ -66,7 +66,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             placeholder="0x96217aE0ee2737266F1cBF9A5539F0b4e99B0BEF"
             className="glass-input text-xs font-mono"
           />
-          <p className="text-[10px] text-[#6b7280]">
+          <p className="text-[10px] text-[var(--muted)]">
             The specific mainnet smart contract anchoring findings to unique Agent ID tokens.
           </p>
         </div>
@@ -92,12 +92,12 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             <button
               type="button"
               onClick={() => setShowApiKey(!showApiKey)}
-              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6b7280] hover:text-white transition-colors"
+              className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
             >
               {showApiKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
             </button>
           </div>
-          <p className="text-[10px] text-[#6b7280]">
+          <p className="text-[10px] text-[var(--muted)]">
             Paste your API key from the <a href="https://pc.0g.ai" target="_blank" rel="noopener noreferrer" className="text-[#00f2fe] hover:underline">pc.0g.ai dashboard</a> to execute verifiable, decentralized research.
           </p>
         </div>
@@ -118,10 +118,10 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
           {connectedAddress ? (
             <div className="glass-panel p-3 bg-[rgba(16,185,129,0.05)] border-[rgba(16,185,129,0.2)] flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] text-[#6b7280] uppercase tracking-wider">Account</span>
+                <span className="text-[10px] text-[var(--muted)] uppercase tracking-wider">Account</span>
                 <button 
                   onClick={() => window.location.reload()}
-                  className="text-[10px] text-[#9ca3af] hover:text-white underline underline-offset-2"
+                  className="text-[10px] text-[var(--muted)] hover:text-[var(--foreground)] underline underline-offset-2"
                 >
                   Disconnect
                 </button>
@@ -129,7 +129,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               <div className="text-xs font-mono text-white truncate bg-black/30 p-2 rounded border border-white/5">
                 {connectedAddress}
               </div>
-              <p className="text-[10px] text-[#6b7280]">
+              <p className="text-[10px] text-[var(--muted)]">
                 On-chain transactions signed via browser wallet.
               </p>
             </div>
@@ -163,12 +163,12 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               <button
                 type="button"
                 onClick={() => setShowPrivateKey(!showPrivateKey)}
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#6b7280] hover:text-white transition-colors"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors"
               >
                 {showPrivateKey ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
               </button>
             </div>
-            <p className="text-[10px] text-[#6b7280] mt-1">
+            <p className="text-[10px] text-[var(--muted)] mt-1">
               {connectedAddress 
                 ? "Add your key to enable full file replication to 0G storage nodes (enables download on StorageScan)." 
                 : "Your funded 0G EVM key — used for both on-chain proof and storage node upload."}
@@ -177,11 +177,11 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-[rgba(255,255,255,0.08)] flex flex-col gap-2 bg-[rgba(0,0,0,0.2)] p-3 rounded-lg">
-        <div className="flex items-center gap-1.5 text-xs text-[#d1d5db] font-semibold">
+      <div className="mt-6 pt-4 border-t border-[var(--card-border)] flex flex-col gap-2 bg-[var(--container-bg)] p-3 rounded-lg">
+        <div className="flex items-center gap-1.5 text-xs text-[var(--foreground)] font-semibold">
           <Sliders className="w-3.5 h-3.5 text-[#00f2fe]" /> 0G Architecture Info
         </div>
-        <ul className="text-[11px] text-[#9ca3af] flex flex-col gap-1 list-disc list-inside">
+        <ul className="text-[11px] text-[var(--muted)] flex flex-col gap-1 list-disc list-inside">
           <li>Network: 0G Mainnet (16661)</li>
           <li>Consensus: Proof of Data Avail.</li>
           <li>Storage Mode: Turbo Indexer</li>
