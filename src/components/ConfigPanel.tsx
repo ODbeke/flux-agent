@@ -73,7 +73,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               value={contractAddress}
               readOnly
               placeholder="0x96217aE0ee2737266F1cBF9A5539F0b4e99B0BEF"
-              className="glass-input text-xs font-mono w-full pr-9 cursor-default"
+              className="glass-input text-[10px] font-mono w-full pr-12 cursor-default"
             />
             <button
               type="button"
@@ -107,7 +107,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               value={apiKey}
               onChange={(e) => setApiKey(e.target.value)}
               placeholder="0G_API_KEY_..."
-              className="glass-input text-xs font-mono w-full pr-9"
+              className="glass-input text-[10px] font-mono w-full pr-12"
             />
             <button
               type="button"
@@ -180,7 +180,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
                 value={privateKey}
                 onChange={(e) => setPrivateKey(e.target.value)}
                 placeholder="0xabcd1234..."
-                className="glass-input text-xs font-mono w-full pr-9"
+                className="glass-input text-[10px] font-mono w-full pr-12"
               />
               <button
                 type="button"
