@@ -50,7 +50,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
         </div>
       </div>
 
-      <div className="flex flex-col gap-5 flex-1">
+      <div className="flex flex-col gap-7 flex-1">
         {/* Agent ID Standard Registry Contract Address */}
         <div className="flex flex-col gap-2">
           <label className="text-xs font-medium text-[var(--foreground)] flex items-center justify-between">
@@ -70,6 +70,8 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             The specific mainnet smart contract anchoring findings to unique Agent ID tokens.
           </p>
         </div>
+
+        <div className="border-t border-[var(--card-border)] opacity-40 mx-2" />
 
         {/* 0G Compute API Key */}
         <div className="flex flex-col gap-2">
@@ -101,6 +103,8 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             Paste your API key from the <a href="https://pc.0g.ai" target="_blank" rel="noopener noreferrer" className="text-[#00f2fe] hover:underline">pc.0g.ai dashboard</a> to execute verifiable, decentralized research.
           </p>
         </div>
+
+        <div className="border-t border-[var(--card-border)] opacity-40 mx-2" />
 
         {/* Wallet Connection / Private Key Section */}
         <div className="flex flex-col gap-2">
