@@ -40,9 +40,9 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <h1 className="animate-reveal [animation-delay:400ms] opacity-0 font-poppins text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 max-w-4xl leading-[1.1]">
-          Synthesize <span className="text-[#4A6FA5]">Intelligence.</span> <br/>
-          Secure the <span className="text-gray-300">Truth.</span>
+        <h1 className="animate-reveal [animation-delay:400ms] opacity-0 font-poppins text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-10 max-w-5xl leading-[0.95]">
+          Synthesize <span className="bg-gradient-to-r from-[#4A6FA5] to-[#00f2fe] bg-clip-text text-transparent">Intelligence.</span> <br/>
+          Secure the <span className="text-gray-900/10 inline-block">Truth.</span>
         </h1>
         
         <p className="animate-reveal [animation-delay:600ms] opacity-0 text-lg md:text-xl text-gray-500 max-w-2xl mb-10 leading-relaxed">
