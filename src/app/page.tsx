@@ -49,20 +49,20 @@ export default function LandingPage() {
           The ultimate synthesis layer for verifiable AI research. Generate insights with 0G Compute, archive permanently on 0G Storage, and own your intellectual capital.
         </p>
 
-        <div className="animate-reveal [animation-delay:800ms] opacity-0 flex flex-col sm:flex-row items-center gap-5">
-          <Link 
-            href="/dashboard" 
-            className="w-full sm:w-auto px-12 py-5 rounded-full font-bold text-xl glossy-btn text-white animate-heartbeat transition-all flex items-center justify-center gap-2"
-          >
-            Get Started <ArrowRight className="w-5 h-5" />
-          </Link>
+        <div className="animate-reveal [animation-delay:800ms] opacity-0 flex flex-col sm:flex-row items-center gap-6">
           <a 
             href="https://docs.0g.ai" 
             target="_blank" 
-            className="w-full sm:w-auto px-10 py-5 bg-white text-gray-500 border border-gray-100 rounded-full font-bold text-lg hover:bg-gray-50 hover:text-[#4A6FA5] transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-10 py-4 bg-white text-gray-400 border border-gray-100 rounded-full font-semibold text-base hover:bg-gray-50 hover:text-[#4A6FA5] transition-all flex items-center justify-center gap-2"
           >
             Read Documentation
           </a>
+          <Link 
+            href="/dashboard" 
+            className="w-full sm:w-auto px-14 py-6 rounded-full font-bold text-2xl glossy-btn text-white animate-heartbeat transition-all flex items-center justify-center gap-3 shadow-2xl"
+          >
+            Get Started <ArrowRight className="w-6 h-6" />
+          </Link>
         </div>
 
         {/* Visual Anchor */}
