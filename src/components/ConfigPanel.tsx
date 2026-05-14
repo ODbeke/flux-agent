@@ -181,16 +181,6 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
         </div>
       </div>
 
-      <div className="mt-6 pt-4 border-t border-[var(--card-border)] flex flex-col gap-2 bg-[var(--container-bg)] p-3 rounded-lg">
-        <div className="flex items-center gap-1.5 text-xs text-[var(--foreground)] font-semibold">
-          <Sliders className="w-3.5 h-3.5 text-[#00f2fe]" /> 0G Architecture Info
-        </div>
-        <ul className="text-[11px] text-[var(--muted)] flex flex-col gap-1 list-disc list-inside">
-          <li>Network: 0G Mainnet (16661)</li>
-          <li>Consensus: Proof of Data Avail.</li>
-          <li>Storage Mode: Turbo Indexer</li>
-        </ul>
-      </div>
     </div>
   );
 };
