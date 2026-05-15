@@ -177,16 +177,16 @@ export default function Home() {
 
   useEffect(() => {
     const suggestions = [
-      "0G Permanent Data Scalability",
-      "DePIN compute resource allocation models",
-      "Deep Liquidity Staking protocols on 0G",
-      "Verifiable AI Inference pipeline",
-      "EVM-compatible storage anchoring",
-      "Decentralized GPU resource mapping",
-      "Cross-chain identity verification",
-      "Merkle Tree root validation",
-      "Proof of Data Availability consensus",
-      "Decentralized reasoning synthesis"
+      "Thesis on AI inference latency in decentralized storage",
+      "Research on FHE overhead in multi-agent smart contracts",
+      "Thesis on LLM subjective consensus for on-chain history",
+      "Research on memecoin VWAP and social sentiment spikes",
+      "Thesis on nanopayment channels for decentralized APIs",
+      "Research on AI agents as Web3 gaming market makers",
+      "Thesis on ZK-proof limits for agent identity anchors",
+      "Research on compute latency in multi-agent pipelines",
+      "Thesis on the reliability of AI-governed Intelligent Contracts",
+      "Research on L1 token divergence before mainnet upgrades"
     ];
     const shuffle = () => {
       const shuffled = [...suggestions].sort(() => Math.random() - 0.5);
