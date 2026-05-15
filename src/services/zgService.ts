@@ -137,6 +137,6 @@ export async function uploadToZeroGravityAndMint(
     agentId,
     mintTxHash,
     explorerLink: `https://chainscan.0g.ai/tx/${mintTxHash}`,
-    storageScanLink: `https://storagescan.0g.ai/tx/${storageTxHash}`
+    storageScanLink: `https://storagescan.0g.ai/address/${signerAddress}`
   };
 }
