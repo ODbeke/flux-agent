@@ -18,16 +18,18 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-[#0f172a] font-montserrat overflow-hidden hero-gradient">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-8 flex items-center justify-between bg-transparent">
-        <div className="flex items-center gap-2.5">
-          <span className="font-museo font-extrabold text-3xl tracking-tighter text-[#4A6FA5]">FLUX</span>
+      <nav className="fixed top-0 w-full z-50 px-6 py-10 bg-transparent">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <span className="font-museo font-extrabold text-5xl tracking-tighter text-[#4A6FA5]">FLUX</span>
+          </div>
+          <Link 
+            href="/dashboard" 
+            className="group flex items-center gap-3 bg-[#0f172a] text-white px-8 py-3.5 rounded-full text-lg font-bold hover:bg-[#4A6FA5] hover:scale-110 transition-all duration-300 shadow-xl"
+          >
+            Launch App <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
         </div>
-        <Link 
-          href="/dashboard" 
-          className="group flex items-center gap-2 bg-[#0f172a] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#4A6FA5] hover:scale-110 transition-all duration-300"
-        >
-          Launch App <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-        </Link>
       </nav>
 
       {/* Hero Section */}
