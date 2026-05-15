@@ -157,6 +157,7 @@ body {
 /* Landing Page Typography & Motion */
 .font-poppins { font-family: var(--font-poppins), sans-serif; }
 .font-montserrat { font-family: var(--font-montserrat), sans-serif; }
+.font-museo { font-family: var(--font-museo), sans-serif; }
 
 .luxury-card {
   background: rgba(255, 255, 255, 0.8);

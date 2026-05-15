@@ -293,20 +293,11 @@ export default function Home() {
     <div className="flex flex-col flex-1 w-full max-w-7xl mx-auto px-4 py-6 md:py-10">
       {/* Header Application Bar */}
       <header className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-5 border-b border-[rgba(255,255,255,0.06)]">
-        <div className="flex items-center gap-3">
-          <div className="w-44 h-10 rounded-lg overflow-hidden bg-white flex items-center justify-center shadow-[0_0_20px_rgba(255,255,255,0.1)] border border-[rgba(255,255,255,0.1)]">
-            <Image 
-              src="/logo.jpg" 
-              alt="Flux Agent Logo" 
-              width={176} 
-              height={40} 
-              className="object-contain"
-              priority
-            />
-          </div>
+        <div className="flex items-center gap-4">
+          <span className="font-museo font-extrabold text-4xl tracking-tighter text-[#4A6FA5]">FLUX</span>
           <div>
             <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2.5 font-[family-name:var(--font-roboto)]">
-              Flux Agent
+              Agent
             </h1>
             <p className="text-xs text-[var(--muted)]">
               AI generates. 0G preserves. Chain verifies
@@ -584,7 +575,7 @@ export default function Home() {
       {/* Premium Footer Layout */}
       <footer className="mt-12 pt-6 border-t border-[var(--card-border)] flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-[var(--muted)]">
         <div>
-          <span className="text-[var(--muted)] font-medium">Flux Agent Protocol</span> — Built for the 0G Mainnet Showcase
+          <span className="text-[var(--muted)] font-medium font-museo tracking-tight">FLUX AGENT</span> — Built for the 0G Mainnet Showcase
         </div>
         <div className="flex items-center gap-4">
           <a href="https://docs.0g.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">

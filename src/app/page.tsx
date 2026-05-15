@@ -20,10 +20,7 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 px-6 py-8 flex items-center justify-between bg-transparent">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-[#4A6FA5] flex items-center justify-center text-white">
-            <Layers className="w-5 h-5" />
-          </div>
-          <span className="font-poppins font-bold text-xl tracking-tight">Flux Agent</span>
+          <span className="font-museo font-extrabold text-3xl tracking-tighter text-[#4A6FA5]">FLUX</span>
         </div>
         <Link 
           href="/dashboard" 
@@ -147,10 +144,7 @@ export default function LandingPage() {
       <footer className="py-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 rounded bg-[#4A6FA5] flex items-center justify-center text-white">
-              <Layers className="w-4 h-4" />
-            </div>
-            <span className="font-poppins font-bold text-lg">Flux Agent</span>
+            <span className="font-museo font-extrabold text-2xl tracking-tighter text-[#4A6FA5]">FLUX</span>
           </div>
           <div className="flex gap-8 text-sm text-gray-400">
             <a href="#" className="hover:text-[#4A6FA5]">Terms</a>
