@@ -40,8 +40,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${roboto.variable} ${poppins.variable} ${montserrat.variable} ${museo.variable} h-full antialiased`} suppressHydrationWarning>
-      <body className="min-h-full flex flex-col bg-[#050508] text-[#f3f4f6]" suppressHydrationWarning>
+    <html lang="en" data-theme="light" className={`${inter.variable} ${roboto.variable} ${poppins.variable} ${montserrat.variable} ${museo.variable} h-full antialiased`} suppressHydrationWarning>
+      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]" suppressHydrationWarning>
         {children}
       </body>
     </html>

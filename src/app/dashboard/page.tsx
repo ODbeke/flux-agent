@@ -158,7 +158,7 @@ export default function Home() {
   const [currentStep, setCurrentStep] = useState("");
   const [reportData, setReportData] = useState<ResearchReportResponse | null>(null);
   const [uploadResult, setUploadResult] = useState<StorageUploadResult | null>(null);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
+  const [theme, setTheme] = useState<"dark" | "light">("light");
   const [errorMsg, setErrorMsg] = useState("");
 
   // Apply theme to document
