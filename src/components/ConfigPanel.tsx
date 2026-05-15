@@ -193,7 +193,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
             <p className="text-[10px] text-[var(--muted)] mt-1">
               {connectedAddress 
                 ? "Add your key to enable full file replication to 0G storage nodes (enables download on StorageScan)." 
-                : "Your funded 0G EVM key — used for both on-chain proof and storage node upload."}
+                : "Your funded 0G EVM key — used for both Onchain Proof and Storage Node upload."}
             </p>
           </div>
         </div>
