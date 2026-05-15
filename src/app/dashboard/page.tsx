@@ -248,7 +248,6 @@ export default function Home() {
       );
 
       setUploadResult(zgResponse);
-      setVerifiedAgents(prev => [zgResponse, ...prev]);
 
       // Step 3: Upload actual file data to storage nodes (makes it downloadable on StorageScan)
       // Uses user's private key if provided, otherwise falls back to sponsor key on server
