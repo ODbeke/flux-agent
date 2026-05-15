@@ -57,16 +57,6 @@ export default function LandingPage() {
           </Link>
         </div>
 
-        {/* Visual Anchor */}
-        <div className="animate-reveal [animation-delay:1000ms] opacity-0 mt-20 relative w-full aspect-[2/1] max-w-5xl">
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent z-10" />
-          <Image 
-            src="/flux_agent_mesh_viz_1778796147802.png" 
-            alt="AI Mesh Visualization" 
-            fill
-            className="object-contain opacity-80"
-          />
-        </div>
       </section>
 
       {/* Protocol Flow Sequence */}
