@@ -24,7 +24,7 @@ export default function LandingPage() {
         </div>
         <Link 
           href="/dashboard" 
-          className="group flex items-center gap-2 bg-[#0f172a] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#4A6FA5] transition-all"
+          className="group flex items-center gap-2 bg-[#0f172a] text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-[#4A6FA5] hover:scale-110 transition-all duration-300"
         >
           Launch App <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
@@ -45,13 +45,13 @@ export default function LandingPage() {
           <a 
             href="https://docs.0g.ai" 
             target="_blank" 
-            className="w-full sm:w-auto px-10 py-4 bg-white text-gray-400 border border-gray-100 rounded-full font-semibold text-base hover:bg-gray-50 hover:text-[#4A6FA5] transition-all flex items-center justify-center gap-2"
+            className="w-full sm:w-auto px-10 py-4 bg-white text-gray-400 border border-gray-100 rounded-full font-semibold text-base hover:bg-gray-50 hover:text-[#4A6FA5] hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2"
           >
             Read Documentation
           </a>
           <Link 
             href="/dashboard" 
-            className="w-full sm:w-auto px-14 py-6 rounded-full font-bold text-2xl glossy-btn text-white animate-heartbeat transition-all flex items-center justify-center gap-3 shadow-2xl"
+            className="w-full sm:w-auto px-14 py-6 rounded-full font-bold text-2xl glossy-btn text-white animate-heartbeat hover:scale-110 transition-all duration-300 flex items-center justify-center gap-3 shadow-2xl"
           >
             Get Started <ArrowRight className="w-6 h-6" />
           </Link>
@@ -73,8 +73,10 @@ export default function LandingPage() {
       <section id="how-it-works" className="py-24 bg-gray-50/50">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="font-poppins text-4xl md:text-5xl font-bold mb-4">Verifiable Lifecycle</h2>
-            <p className="text-gray-500">Four pillars of decentralized intellectual capital.</p>
+            <h2 className="font-poppins text-4xl md:text-5xl font-bold mb-6">Verifiable Lifecycle</h2>
+            <p className="text-gray-600 font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+              Four pillars of decentralized intellectual capital.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
