@@ -132,7 +132,7 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
           </div>
         </div>
       </div>
-      )}
+
 
       {!result && !isSynthesizing && !isUploading && (
         <div className="mt-6 p-3 rounded-lg bg-[rgba(255,255,255,0.02)] border border-[rgba(255,255,255,0.04)] text-center">
