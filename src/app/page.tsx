@@ -18,7 +18,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-[#0f172a] font-montserrat overflow-hidden hero-gradient">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-5 flex items-center justify-between bg-white/20 backdrop-blur-md">
+      <nav className="fixed top-0 w-full z-50 px-6 py-8 flex items-center justify-between bg-transparent">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-[#4A6FA5] flex items-center justify-center text-white">
             <Layers className="w-5 h-5" />
