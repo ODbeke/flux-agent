@@ -29,21 +29,21 @@ const renderMarkdownLine = (line: string, idx: number) => {
   // Headers
   if (trimmed.startsWith("# ")) {
     return (
-      <h2 key={idx} className="text-xl font-bold text-white mt-6 mb-3 pb-1 border-b border-[rgba(255,255,255,0.08)] flex items-center gap-2">
-        <span className="text-[#00f2fe]">◆</span> {trimmed.replace(/^#\s+/, "")}
+      <h2 key={idx} className="text-xl font-bold text-[var(--foreground)] mt-6 mb-3 pb-1 border-b border-[var(--card-border)] flex items-center gap-2">
+        <span className="text-[var(--primary-glow)]">◆</span> {trimmed.replace(/^#\s+/, "")}
       </h2>
     );
   }
   if (trimmed.startsWith("## ")) {
     return (
-      <h3 key={idx} className="text-base font-semibold text-[#f3f4f6] mt-4 mb-2 text-[#00f2fe]">
+      <h3 key={idx} className="text-base font-semibold text-[var(--foreground)] mt-4 mb-2">
         {trimmed.replace(/^##\s+/, "")}
       </h3>
     );
   }
   if (trimmed.startsWith("### ")) {
     return (
-      <h4 key={idx} className="text-sm font-semibold text-[#d1d5db] mt-3 mb-1">
+      <h4 key={idx} className="text-sm font-semibold text-[var(--muted)] mt-3 mb-1">
         {trimmed.replace(/^###\s+/, "")}
       </h4>
     );
@@ -51,7 +51,7 @@ const renderMarkdownLine = (line: string, idx: number) => {
 
   // Horizontal Rule
   if (trimmed === "---") {
-    return <hr key={idx} className="my-4 border-t border-[rgba(255,255,255,0.06)]" />;
+    return <hr key={idx} className="my-4 border-t border-[var(--card-border)]" />;
   }
 
   // List Items
@@ -71,7 +71,7 @@ const renderMarkdownLine = (line: string, idx: number) => {
     if (isHeader) return null; // Skip separator line mapping
 
     return (
-      <div key={idx} className="grid grid-cols-3 gap-2 py-1.5 px-3 border-b border-[rgba(255,255,255,0.04)] text-xs even:bg-[rgba(255,255,255,0.01)]">
+      <div key={idx} className="grid grid-cols-3 gap-2 py-1.5 px-3 border-b border-[var(--card-border)] text-xs even:bg-[var(--container-bg)]">
         {cells.map((cell, cIdx) => (
           <span key={cIdx} className={cIdx === 0 ? "font-semibold text-[var(--foreground)]" : "text-[var(--muted)]"}>
             {renderInlineMarkdown(cell)}
@@ -109,7 +109,7 @@ const renderInlineMarkdown = (text: string) => {
       const codeEnd = remaining.indexOf("`");
       if (codeEnd !== -1) {
         parts.push(
-          <code key={keyCounter++} className="px-1.5 py-0.5 rounded bg-[rgba(0,242,254,0.1)] text-[#00f2fe] font-mono text-[11px]">
+          <code key={keyCounter++} className="px-1.5 py-0.5 rounded bg-[var(--container-bg)] text-[var(--primary-glow)] font-mono text-[11px]">
             {remaining.substring(0, codeEnd)}
           </code>
         );
@@ -125,7 +125,7 @@ const renderInlineMarkdown = (text: string) => {
       const boldEnd = remaining.indexOf("**");
       if (boldEnd !== -1) {
         parts.push(
-          <strong key={keyCounter++} className="font-bold text-white">
+          <strong key={keyCounter++} className="font-bold text-[var(--foreground)]">
             {remaining.substring(0, boldEnd)}
           </strong>
         );
