@@ -85,14 +85,18 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
               {isUploading && !result 
                 ? currentStep || "Calculating Merkle tree proof roots..." 
                 : result 
-                ? "Allocated blocks on ZeroGravity disk nodes." 
+                ? "Research data permanently archived." 
                 : "Ready to stage file blob sequence."}
             </p>
             {result && (
-              <div className="mt-2 p-2 rounded bg-[var(--container-bg)] border border-[var(--card-border)] font-mono text-[11px] break-all text-[#00f2fe]">
-                <span className="text-[var(--muted)] block text-[9px] uppercase">Content Hash:</span>
-                {result.contentHash}
-              </div>
+              <a 
+                href={result.storageScanLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1.5 text-[10px] text-[#8b5cf6] font-bold hover:underline"
+              >
+                View on StorageScan <ExternalLink className="w-3 h-3" />
+              </a>
             )}
           </div>
         </div>
@@ -108,94 +112,26 @@ export const ExplorerView: React.FC<ExplorerViewProps> = ({
           </div>
           <div className="flex-1">
             <span className="text-sm font-medium text-[var(--foreground)] flex items-center gap-1.5">
-              <ShieldCheck className="w-4 h-4 text-[#10b981]" /> 3. Agent ID Verifiable Anchor
+              <ShieldCheck className="w-4 h-4 text-[#10b981]" /> 3. Onchain Identity Commit
             </span>
             <p className="text-xs text-[var(--muted)] mt-0.5">
               {result 
-                ? "ERC-7857 digital identity successfully registered onchain." 
-                : "Pending final block inclusion state."}
+                ? "Pending final block inclusion state." 
+                : "Awaiting sequence confirmation."}
             </p>
             {result && (
-              <div className="flex flex-col gap-2 mt-2">
-                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[rgba(16,185,129,0.1)] border border-[rgba(16,185,129,0.2)] text-[#10b981] font-mono text-xs font-bold w-fit">
-                  {result.agentId}
-                </div>
-                <div className="p-3 rounded-lg bg-[rgba(16,185,129,0.05)] border border-[rgba(16,185,129,0.1)]">
-                  <p className="text-[10px] text-[#10b981] leading-relaxed">
-                    <strong>Verification Guide</strong>: Copy this ID and look for the <code>AgentMinted</code> event on the 0G Chain Explorer. The event anchors your <strong>Content Hash</strong> to this specific Agent Identity.
-                  </p>
-                </div>
-              </div>
+              <a 
+                href={result.explorerLink} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="mt-2 inline-flex items-center gap-1.5 text-[10px] text-[#10b981] font-bold hover:underline"
+              >
+                Verify on 0G Chainscan <ExternalLink className="w-3 h-3" />
+              </a>
             )}
           </div>
         </div>
       </div>
-
-      {/* Explorer Verification Links Section */}
-      {result && (
-        <div className="mt-6 pt-5 border-t border-[rgba(255,255,255,0.08)] flex flex-col gap-3">
-          <span className="text-xs font-semibold uppercase tracking-wider text-[#9ca3af]">
-            Cryptographic Proof Access
-          </span>
-
-          <div className="bg-[rgba(16,185,129,0.05)] border border-[rgba(16,185,129,0.1)] p-3 rounded-lg mb-2">
-            <p className="text-[10px] text-[#10b981] leading-relaxed">
-              <span className="font-bold block mb-1">Hash Verification Guide:</span>
-              • <strong>Content Hash</strong> (Top): The unique fingerprint of your research data.<br/>
-              • <strong>Transaction Hash</strong> (Bottom): The permanent receipt of your 0G Mainnet broadcast.
-            </p>
-          </div>
-
-          <a
-            href={result.explorerLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col p-3 rounded-lg bg-[rgba(255,255,255,0.03)] border border-[var(--card-border)] hover:bg-[rgba(255,255,255,0.06)] hover:border-[#00f2fe] transition-all group gap-2"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <ShieldCheck className="w-4 h-4 text-[#00f2fe] shrink-0" />
-                <span className="text-xs font-medium text-[var(--foreground)]">Verify on 0G Chainscan</span>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[var(--muted)] group-hover:text-[#00f2fe]" />
-            </div>
-            
-            <div className="mt-1 p-2 rounded bg-[var(--container-bg)] border border-[var(--card-border)] font-mono text-[9px] text-[#00f2fe] leading-tight flex flex-col gap-1">
-              <span className="text-[var(--muted)] uppercase">On-Chain Transaction Receipt:</span>
-              <div className="break-all opacity-80">
-                {result.mintTxHash}
-              </div>
-            </div>
-          </a>
-
-          <a
-            href={result.storageScanLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col p-3 rounded-lg bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.08)] hover:bg-[rgba(255,255,255,0.06)] hover:border-[#8b5cf6] transition-all group gap-2"
-          >
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <Database className="w-4 h-4 text-[#8b5cf6] shrink-0" />
-                <span className="text-xs font-medium text-white">View on 0G StorageScan</span>
-              </div>
-              <ExternalLink className="w-3.5 h-3.5 text-[#9ca3af] group-hover:text-[#8b5cf6]" />
-            </div>
-            
-            <div className="mt-1 p-2 rounded bg-[var(--container-bg)] border border-[var(--card-border)] font-mono text-[9px] text-[#8b5cf6] leading-tight flex flex-col gap-1">
-              <span className="text-[var(--muted)] uppercase">Storage Layer Index:</span>
-              <div className="break-all opacity-80">
-                {result.storageTxHash}
-              </div>
-            </div>
-          </a>
-
-          <div className="p-3 rounded-lg bg-[var(--container-bg)] border border-[var(--card-border)]">
-            <p className="text-[9px] text-[var(--muted)] italic">
-              Verification Successful: Your Agent ID is minted on the EVM layer, and the content blob has been anchored to the decentralized 0G Storage nodes.
-            </p>
-          </div>
-        </div>
       )}
 
       {!result && !isSynthesizing && !isUploading && (
