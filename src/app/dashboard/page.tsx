@@ -293,16 +293,11 @@ export default function Home() {
     <div className="flex flex-col flex-1 w-full max-w-7xl mx-auto px-4 py-6 md:py-10">
       {/* Header Application Bar */}
       <header className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-5 border-b border-[rgba(255,255,255,0.06)]">
-        <div className="flex items-center gap-4">
-          <span className="font-museo font-extrabold text-4xl tracking-tighter text-[#4A6FA5]">FLUX</span>
-          <div>
-            <h1 id="app-title" className="text-xl md:text-2xl font-bold tracking-tight text-[var(--foreground)] flex items-center gap-2.5 font-[family-name:var(--font-roboto)]">
-              Agent
-            </h1>
-            <p className="text-xs text-[var(--muted)]">
-              AI generates. 0G preserves. Chain verifies
-            </p>
-          </div>
+        <div className="flex flex-col">
+          <span className="font-museo font-extrabold text-4xl tracking-tighter text-[#4A6FA5] leading-none">FLUX</span>
+          <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-[var(--muted)] mt-1.5 opacity-80">
+            AI generates. 0G preserves. Chain verifies
+          </p>
         </div>
 
         <div className="flex items-center gap-3">
