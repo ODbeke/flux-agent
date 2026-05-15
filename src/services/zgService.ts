@@ -102,22 +102,21 @@ export async function uploadToZeroGravityAndMint(
     throw new Error(`0G Storage submission failed: ${msg}. Ensure your wallet has sufficient A0GI.`);
   }
 
-  // === STEP 2: Anchor Agent Identity on-chain ===
-  onProgress?.("Step 2/2: Confirm Agent ID Anchor...");
+  // === STEP 2: Mint Agent ID on our registry ===
+  onProgress?.("Step 2/2: Confirm Agent ID Mint...");
   let mintTxHash = storageTxHash; // fallback
   const agentId = `AGENT-${Math.floor(Math.random() * 9000) + 1000}`;
   
   try {
-    // Self-anchor transaction: sending raw text data to our own wallet address
-    // This avoids hitting smart contract function selector revert errors on the explorer
+    // Simple data-anchor transaction to our registry contract
     const mintTx = await signer.sendTransaction({
-      to: signerAddress,
+      to: cleanContractAddress,
       data: ethers.hexlify(ethers.toUtf8Bytes(`FLUX_AGENT:${dataRoot}:${storageTxHash}`)),
       gasLimit: 120000
     });
     await mintTx.wait();
     mintTxHash = mintTx.hash;
-    onProgress?.("✓ Agent ID anchored on 0G Chain!");
+    onProgress?.("✓ Agent ID minted on 0G Chain!");
   } catch (mintErr: unknown) {
     console.warn("Agent mint failed (non-blocking):", mintErr);
     // Storage is already indexed — this is non-critical

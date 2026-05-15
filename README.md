@@ -74,7 +74,7 @@ The FLUX protocol is deployed and active on the **0G Aristotle Mainnet**.
 
 | Component | Contract Address |
 | :--- | :--- |
-| **FLUX Agent Registry** | `0x6F772D147ccB8017Ed5f1817B35E96E70Ab9a288` |
+| **FLUX Agent Registry** | `0x6b7d20d4588C72cD7A2BEc3aa898fF72b5a1A35E` |
 | **0G Flow (Storage)** | `0x62D4144dB0F0a6fBBaeb6296c785C71B3D57C526` |
 
 ---

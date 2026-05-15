@@ -147,7 +147,7 @@ export default function Home() {
   const [topic, setTopic] = useState("");
   const [apiKey, setApiKey] = useState("");
   const [privateKey, setPrivateKey] = useState("");
-  const [contractAddress, setContractAddress] = useState("0x6F772D147ccB8017Ed5f1817B35E96E70Ab9a288");
+  const [contractAddress, setContractAddress] = useState("0x6b7d20d4588C72cD7A2BEc3aa898fF72b5a1A35E");
   const [walletSigner, setWalletSigner] = useState<ethers.JsonRpcSigner | null>(null);
   const [connectedAddress, setConnectedAddress] = useState("");
 
@@ -229,14 +229,10 @@ export default function Home() {
     // Step 1: Execute AI synthesis pipeline
     setIsSynthesizing(true);
     try {
-      const aiResponseResult = await generateResearchReportAction(
+      const aiResponse = await generateResearchReportAction(
         topic, 
         apiKey
       );
-      if (aiResponseResult.error || !aiResponseResult.data) {
-        throw new Error(aiResponseResult.error || "Failed to generate report from 0G Network.");
-      }
-      const aiResponse = aiResponseResult.data;
       setReportData(aiResponse);
 
       // Step 2: Trigger storage indexing allocation and Agent ID minting sequence
@@ -244,11 +240,7 @@ export default function Home() {
       setIsUploading(true);
       
       setCurrentStep("Computing 0G storage proofs...");
-      const metadataResult = await get0GMetadataAction(aiResponse.markdown);
-      if (metadataResult.error || !metadataResult.data) {
-        throw new Error(metadataResult.error || "Failed to compute 0G storage proofs.");
-      }
-      const metadata = metadataResult.data;
+      const metadata = await get0GMetadataAction(aiResponse.markdown);
 
       const zgResponse = await uploadToZeroGravityAndMint(
         aiResponse.markdown,

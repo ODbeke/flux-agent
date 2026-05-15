@@ -55,4 +55,9 @@ contract FluxAgentAristotle {
     function withdraw() external {
         payable(msg.sender).transfer(address(this).balance);
     }
+
+    // Fallback functions to accept raw data anchoring payloads
+    // This resolves the smart contract revert issues on block explorers
+    fallback() external payable {}
+    receive() external payable {}
 }

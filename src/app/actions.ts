@@ -10,14 +10,13 @@ import { tmpdir } from "os";
 export async function generateResearchReportAction(
   topic: string,
   apiKey: string
-): Promise<{ data?: ResearchReportResponse; error?: string }> {
+): Promise<ResearchReportResponse> {
   try {
-    const data = await generateReportLib(topic, apiKey);
-    return { data };
+    return await generateReportLib(topic, apiKey);
   } catch (error: unknown) {
     console.error("AI Action Error:", error);
     const msg = error instanceof Error ? error.message : String(error);
-    return { error: msg || "Failed to generate AI research report on server." };
+    throw new Error(msg || "Failed to generate AI research report on server.");
   }
 }
 
@@ -25,32 +24,30 @@ export async function generateResearchReportAction(
  * Computes correct 0G Metadata (Root and Length) for a file.
  * Using a server action allows us to use the Node-only SDK ZgFile safely.
  */
-export async function get0GMetadataAction(content: string): Promise<{ data?: { root: string; length: number; nodes: any[] }; error?: string }> {
+export async function get0GMetadataAction(content: string): Promise<{ root: string; length: number; nodes: any[] }> {
   const tmpFile = join(tmpdir(), `metadata-${Date.now()}.txt`);
   
   try {
     writeFileSync(tmpFile, content, "utf-8");
     const zgFile = await ZgFile.fromFilePath(tmpFile);
     const [tree, errTree] = await zgFile.merkleTree();
-    if (errTree || !tree) return { error: "Failed to build merkle tree" };
+    if (errTree || !tree) throw new Error("Failed to build merkle tree");
     const root = tree.rootHash() || "0x";
     
     const [submission, err] = await zgFile.createSubmission("0x");
-    if (err || !submission) return { error: "Failed to create submission" };
+    if (err || !submission) throw new Error("Failed to create submission");
     
     return { 
-      data: {
-        root, 
-        length: Number(submission.data.length),
-        nodes: submission.data.nodes.map((n: any) => ({
-          root: n.root,
-          height: Number(n.height)
-        }))
-      }
+      root, 
+      length: Number(submission.data.length),
+      nodes: submission.data.nodes.map((n: any) => ({
+        root: n.root,
+        height: Number(n.height)
+      }))
     };
   } catch (error: unknown) {
     console.error("0G Metadata Error:", error);
-    return { error: "Failed to compute 0G storage metadata." };
+    throw new Error("Failed to compute 0G storage metadata.");
   } finally {
     try { unlinkSync(tmpFile); } catch (_) {}
   }
