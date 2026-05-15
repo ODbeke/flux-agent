@@ -577,19 +577,7 @@ export default function Home() {
         <div>
           <span className="text-[var(--muted)] font-medium font-museo tracking-tight">FLUX AGENT</span> — Built for the 0G Mainnet Showcase
         </div>
-        <div className="flex items-center gap-4">
-          <a href="https://docs.0g.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            Documentation
-          </a>
-          <span>•</span>
-          <a href="https://build.0g.ai/sdks" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            Storage SDKs
-          </a>
-          <span>•</span>
-          <a href="https://compute-marketplace.0g.ai" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            Compute Marketplace
-          </a>
-        </div>
+
       </footer>
     </div>
   );

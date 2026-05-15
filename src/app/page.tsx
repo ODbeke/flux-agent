@@ -140,11 +140,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-2">
             <span className="font-museo font-extrabold text-2xl tracking-tighter text-[#4A6FA5]">FLUX</span>
           </div>
-          <div className="flex gap-8 text-sm text-gray-400">
-            <a href="#" className="hover:text-[#4A6FA5]">Terms</a>
-            <a href="#" className="hover:text-[#4A6FA5]">Privacy</a>
-            <a href="#" className="hover:text-[#4A6FA5]">Github</a>
-          </div>
+
           <p className="text-xs text-gray-400">
             © 2026 Flux Agent. Built for the 0G Aristotle Mainnet.
           </p>
