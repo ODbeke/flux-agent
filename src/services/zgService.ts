@@ -107,7 +107,7 @@ export async function uploadToZeroGravityAndMint(
     onProgress?.("✓ Storage indexed on 0G Network!");
   } catch (err: unknown) {
     console.error("Flow.submit failed:", err);
-    const msg = err instanceof Error ? (err as Record<string, unknown>).shortMessage as string || err.message : String(err);
+    const msg = err instanceof Error ? (err as unknown as Record<string, unknown>).shortMessage as string || err.message : String(err);
     throw new Error(`0G Storage submission failed: ${msg}. Ensure your wallet has sufficient A0GI.`);
   }
 
