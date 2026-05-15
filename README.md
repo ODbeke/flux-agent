@@ -4,31 +4,42 @@
 
 FLUX is a premium, minimalist AI research dashboard designed for the **0G Aristotle Mainnet**. It transforms ephemeral AI reasoning into permanent, verifiable intellectual capital by anchoring deep synthesis directly into the decentralized 0G Storage mesh and validating identity on the 0G EVM layer.
 
----
+<img width="2708" height="1504" alt="image" src="https://github.com/user-attachments/assets/93dd0663-1d83-4627-bd6e-abc05f1c40fe" />
 
-## 🌪️ The Problem Statement
-
-In the current AI landscape, research findings are often **ephemeral and non-verifiable**. 
-- AI outputs are disconnected from the permanent web.
-- Proof of data provenance is missing.
-- There is no cryptographic link between a specific AI reasoning session and its long-term archival.
-
-**FLUX solves this** by creating a verifiable lifecycle for every research finding. Every "Agent" session is cryptographically anchored to 0G storage nodes, ensuring that intellectual capital is permanent, searchable, and provable.
 
 ---
 
-## 🛠️ The 0G Stack
+## The Problem Statement
 
-FLUX leverages the full power of the 0G decentralized infrastructure:
+In the current AI landscape, the generation of knowledge outpaces our ability to verify and secure it.
 
-1.  **0G Private Computer (pc.0g.ai)**: Decentralized AI inference engine. Used to synthesize high-value research reports via a verifiable GPU network (including TEE validation).
+- Ephemeral Data: AI research findings are often temporary, disappearing when a session ends or a centralized server goes down.
+
+- Zero Provenance: There is no verifiable proof of how or when an AI output was generated.
+
+- Web Disconnection: Outputs are siloed, completely disconnected from the permanent, decentralized web.
+
+- Missing Trust Layer: There is no cryptographic link between a specific AI reasoning session and its long-term archival.
+
+**FLUX** solves this by creating a verifiable lifecycle for every research finding. Every Agent session is cryptographically anchored to 0G storage nodes, ensuring that intellectual capital is permanent, searchable, and provable.
+
+---
+
+## The 0G Stack
+
+**FLUX** leverages the full power of the 0G decentralized infrastructure:
+
+1.  **0G Private Computer (pc.0g.ai)**: Decentralized AI inference engine. Used to synthesize high value research reports via a verifiable GPU network (including **TEE validation**).
+   
 2.  **0G Storage (Flow Protocol)**: The permanent archival layer. Research blobs are submitted directly to the 0G Flow contract (`0x62D4144dB0F0a6fBBaeb6296c785C71B3D57C526`) to generate Merkle roots and ensure data availability.
-3.  **0G Chain (EVM Layer)**: The verification anchor. FLUX mints verifiable **Agent IDs** (ERC-7857 compliant architecture) to the 0G Mainnet, linking the content hash to a permanent on-chain identity.
-4.  **0G Indexer & Storage SDK**: Used for full file replication, ensuring that research data is indexed and available for download on **0G StorageScan**.
+
+3.  **0G Chain (EVM Layer)**: The verification anchor. FLUX mints verifiable **Agent IDs** (ERC-7857 compliant architecture) to the 0G Mainnet, linking the content hash to a permanent Onchain identity.
+
+4.  **0G Indexer & Storage SDK**: Powers the backend to ensure full file replication, meaning research data is consistently indexed and available for download via **0G StorageScan.**
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 - Node.js 18+
@@ -57,25 +68,26 @@ FLUX leverages the full power of the 0G decentralized infrastructure:
 
 ---
 
-## 📜 Smart Contract Architecture
+## Smart Contract Architecture
 
 The FLUX protocol is deployed and active on the **0G Aristotle Mainnet**.
 
-| Component | Address |
+| Component | Contract Address |
 | :--- | :--- |
 | **FLUX Agent Registry** | `0x6F772D147ccB8017Ed5f1817B35E96E70Ab9a288` |
 | **0G Flow (Storage)** | `0x62D4144dB0F0a6fBBaeb6296c785C71B3D57C526` |
 
 ---
 
-## 💎 Design Philosophy
+## The Future of Verifiable Thought
+We are moving into an era where the sheer volume of AI-generated content makes truth difficult to define. **FLUX** aims to be the foundational layer for intellectual provenance in the Web3 space.
 
-FLUX is built with a **"High-Status Minimalist"** aesthetic, drawing inspiration from Apple, Notion, and Stripe.
-- **Typography**: MuseoModerno for branding, Poppins for headers, and Montserrat for technical data.
-- **Micro-interactions**: Glossy hover-zoom effects, heartbeat pulsations for CTAs, and a seamless glassmorphism UI.
-- **UX**: A focused execution pipeline that guides the user from raw query to permanent on-chain verification in seconds.
+By combining the decentralized inference of the 0G Private Computer with the permanence of 0G Storage, **FLUX** ensures that the research generated today remains verifiable, accessible, and mathematically sound for decades to come.
+
+We aren't just building a dashboard; we are building the infrastructure for the Agent Economy, where AI reasoning has real, permanent stakes.
 
 ---
 
 Built for the **0G Aristotle Mainnet Showcase**. 
+
 **AI generates. 0G preserves. Chain verifies.**
