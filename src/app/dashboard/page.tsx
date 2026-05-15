@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { 
   Search, 
   Sparkles, 
@@ -293,12 +294,12 @@ export default function Home() {
     <div className="flex flex-col flex-1 w-full max-w-7xl mx-auto px-4 py-6 md:py-10">
       {/* Header Application Bar */}
       <header className="flex flex-col md:flex-row items-center justify-between gap-4 mb-8 pb-5 border-b border-[rgba(255,255,255,0.06)]">
-        <div className="flex flex-col">
+        <Link href="/" className="flex flex-col hover:opacity-80 transition-opacity">
           <span className="font-museo font-extrabold text-4xl tracking-tighter text-[#4A6FA5] leading-none">FLUX</span>
           <p className="text-[9px] uppercase tracking-[0.2em] font-bold text-[var(--muted)] mt-1.5 opacity-80">
             AI generates. 0G preserves. Chain verifies
           </p>
-        </div>
+        </Link>
 
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-3 text-xs text-[var(--muted)] bg-[rgba(255,255,255,0.02)] px-3 py-1.5 rounded-lg border border-[var(--card-border)]">

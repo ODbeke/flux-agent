@@ -20,9 +20,9 @@ export default function LandingPage() {
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 px-6 py-10 bg-transparent">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
+          <Link href="/" className="flex items-center gap-2.5 hover:opacity-80 transition-opacity">
             <span className="font-museo font-extrabold text-5xl tracking-tighter text-[#4A6FA5]">FLUX</span>
-          </div>
+          </Link>
           <Link 
             href="/dashboard" 
             className="group flex items-center gap-3 bg-[#0f172a] text-white px-8 py-3.5 rounded-full text-lg font-bold hover:bg-[#4A6FA5] hover:scale-110 transition-all duration-300 shadow-xl"
@@ -137,9 +137,9 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="py-12 border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
-          <div className="flex items-center gap-2">
+          <Link href="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
             <span className="font-museo font-extrabold text-2xl tracking-tighter text-[#4A6FA5]">FLUX</span>
-          </div>
+          </Link>
 
           <p className="text-xs text-gray-400">
             © 2026 Flux Agent. Built for the 0G Aristotle Mainnet.
