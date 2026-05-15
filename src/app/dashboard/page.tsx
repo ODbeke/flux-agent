@@ -198,9 +198,9 @@ export default function Home() {
   }, []);
 
   const connectWallet = async () => {
-    if (typeof window !== "undefined" && (window as { ethereum?: ethers.Eip1193Provider }).ethereum) {
+    if (typeof window !== "undefined" && (window as unknown as { ethereum?: ethers.Eip1193Provider }).ethereum) {
       try {
-        const provider = new ethers.BrowserProvider((window as { ethereum: ethers.Eip1193Provider }).ethereum);
+        const provider = new ethers.BrowserProvider((window as unknown as { ethereum: ethers.Eip1193Provider }).ethereum);
         await provider.send("eth_requestAccounts", []);
         const signer = await provider.getSigner();
         const address = await signer.getAddress();
