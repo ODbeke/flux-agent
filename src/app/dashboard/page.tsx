@@ -248,6 +248,7 @@ export default function Home() {
         contractAddress,
         metadata.root,
         metadata.length,
+        metadata.nodes,
         (progressStep) => setCurrentStep(progressStep),
         walletSigner
       );

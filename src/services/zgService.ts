@@ -33,6 +33,7 @@ export async function uploadToZeroGravityAndMint(
   contractAddress: string,
   dataRoot: string,
   dataLength: number,
+  dataNodes: any[],
   onProgress?: (step: string) => void,
   walletSigner?: ethers.JsonRpcSigner | null
 ): Promise<StorageUploadResult> {
@@ -76,7 +77,7 @@ export async function uploadToZeroGravityAndMint(
     data: {
       length: dataLength,
       tags: "0x",
-      nodes: [{ root: dataRoot, height: 0 }]
+      nodes: dataNodes
     },
     submitter: signerAddress                               // REQUIRED field
   };
