@@ -18,17 +18,12 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-[#0f172a] font-montserrat overflow-hidden hero-gradient">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full z-50 px-6 py-4 flex items-center justify-between border-b border-gray-100 bg-white/70 backdrop-blur-xl">
+      <nav className="fixed top-0 w-full z-50 px-6 py-5 flex items-center justify-between bg-white/20 backdrop-blur-md">
         <div className="flex items-center gap-2.5">
           <div className="w-8 h-8 rounded-lg bg-[#4A6FA5] flex items-center justify-center text-white">
             <Layers className="w-5 h-5" />
           </div>
           <span className="font-poppins font-bold text-xl tracking-tight">Flux Agent</span>
-        </div>
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-gray-500">
-          <a href="#how-it-works" className="hover:text-[#4A6FA5] transition-colors">Protocol</a>
-          <a href="#security" className="hover:text-[#4A6FA5] transition-colors">Security</a>
-          <a href="#features" className="hover:text-[#4A6FA5] transition-colors">Enterprise</a>
         </div>
         <Link 
           href="/dashboard" 
@@ -40,9 +35,9 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <h1 className="animate-reveal [animation-delay:400ms] opacity-0 font-poppins text-6xl md:text-8xl lg:text-9xl font-extrabold tracking-tighter mb-10 max-w-5xl leading-[0.95]">
-          Synthesize <span className="bg-gradient-to-r from-[#4A6FA5] to-[#00f2fe] bg-clip-text text-transparent">Intelligence.</span> <br/>
-          Secure the <span className="text-gray-900/10 inline-block">Truth.</span>
+        <h1 className="animate-reveal [animation-delay:400ms] opacity-0 font-poppins text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-8 max-w-4xl leading-[1.1]">
+          Synthesize <span className="text-[#4A6FA5]">Intelligence.</span> <br/>
+          Secure the <span className="text-gray-300">Truth.</span>
         </h1>
         
         <p className="animate-reveal [animation-delay:600ms] opacity-0 text-lg md:text-xl text-gray-500 max-w-2xl mb-10 leading-relaxed">
