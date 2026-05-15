@@ -58,11 +58,11 @@ export default function LandingPage() {
       </section>
 
       {/* Protocol Flow Sequence */}
-      <section id="how-it-works" className="py-24 bg-gray-50/50">
+      <section id="how-it-works" className="py-24 bg-[var(--container-bg)] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-20">
-            <h2 className="font-poppins text-4xl md:text-5xl font-bold mb-6">Verifiable Lifecycle</h2>
-            <p className="text-gray-600 font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+            <h2 className="font-poppins text-4xl md:text-5xl font-bold mb-6 text-[var(--foreground)]">Verifiable Lifecycle</h2>
+            <p className="text-[var(--muted)] font-medium text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
               Four pillars of decentralized intellectual capital.
             </p>
           </div>
@@ -76,33 +76,33 @@ export default function LandingPage() {
                 icon: <Cpu />, 
                 title: "Generation", 
                 desc: "High-performance AI inference via 0G decentralized compute network.",
-                color: "bg-blue-50 text-blue-600"
+                color: "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-[#60a5fa]"
               },
               { 
                 icon: <Database />, 
                 title: "Storage", 
                 desc: "Immutable, permanent archival on the ZeroGravity storage mesh.",
-                color: "bg-purple-50 text-purple-600"
+                color: "bg-purple-50 text-purple-600 dark:bg-purple-500/10 dark:text-[#a78bfa]"
               },
               { 
                 icon: <ShieldCheck />, 
                 title: "Verification", 
                 desc: "Cryptographic anchoring on the 0G Chainscan EVM layer.",
-                color: "bg-cyan-50 text-cyan-600"
+                color: "bg-cyan-50 text-cyan-600 dark:bg-cyan-500/10 dark:text-[#22d3ee]"
               },
               { 
                 icon: <Fingerprint />, 
                 title: "Ownership", 
                 desc: "Unique Agent ID issuance proving your research provenance.",
-                color: "bg-emerald-50 text-emerald-600"
+                color: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-[#34d399]"
               }
             ].map((step, idx) => (
-              <div key={idx} className="luxury-card p-8 rounded-2xl relative z-10 bg-white">
-                <div className={`w-14 h-14 rounded-xl ${step.color} flex items-center justify-center mb-6`}>
+              <div key={idx} className="luxury-card p-8 rounded-2xl relative z-10 transition-colors duration-300">
+                <div className={`w-14 h-14 rounded-xl ${step.color} flex items-center justify-center mb-6 shadow-sm`}>
                   {React.cloneElement(step.icon as React.ReactElement<React.ComponentProps<"svg">>, { className: "w-7 h-7" })}
                 </div>
-                <h3 className="font-poppins font-bold text-xl mb-3">{step.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>
+                <h3 className="font-poppins font-bold text-xl mb-3 text-[var(--foreground)]">{step.title}</h3>
+                <p className="text-sm text-[var(--muted)] leading-relaxed">{step.desc}</p>
               </div>
             ))}
           </div>
