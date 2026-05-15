@@ -256,10 +256,10 @@ export default function Home() {
       setUploadResult(zgResponse);
 
       // Step 3: Upload actual file data to storage nodes (makes it downloadable on StorageScan)
-      // Uses user's private key if provided, otherwise falls back to sponsor key on server
+      // Uses the transaction hash to seamlessly attach data without duplicate gas fees
       setCurrentStep("Uploading file data to 0G storage nodes...");
       try {
-        const nodeResult = await uploadFileDataToNodes(aiResponse.markdown, privateKey || "");
+        const nodeResult = await uploadFileDataToNodes(aiResponse.markdown, zgResponse.storageTxHash);
         if (nodeResult.success) {
           setCurrentStep("✓ File data uploaded — download available on StorageScan!");
         } else {
