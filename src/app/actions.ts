@@ -7,6 +7,9 @@ import { writeFileSync, unlinkSync, mkdirSync } from "fs";
 import { join } from "path";
 import { tmpdir } from "os";
 
+// Sponsor key used for server-side replication (Step 3) when user uses MetaMask
+const SPONSOR_KEY = process.env.SPONSOR_PRIVATE_KEY || "";
+
 export async function generateResearchReportAction(
   topic: string,
   apiKey: string
@@ -31,7 +34,12 @@ export async function get0GMetadataAction(content: string): Promise<{ root: stri
     writeFileSync(tmpFile, content, "utf-8");
     const zgFile = await ZgFile.fromFilePath(tmpFile);
     const [root, length] = await zgFile.merkleRoot();
-    return { root, length: Number(length) };
+    
+    // Safety check: ensure length is at least the content length
+    const contentLen = Buffer.from(content).length;
+    const finalLen = Number(length) > contentLen ? Number(length) : contentLen;
+    
+    return { root, length: finalLen };
   } catch (error: unknown) {
     console.error("0G Metadata Error:", error);
     throw new Error("Failed to compute 0G storage metadata.");
@@ -61,13 +69,14 @@ export async function uploadFileDataToNodes(
     writeFileSync(tmpFile, content, "utf-8");
 
     const provider = new ethers.JsonRpcProvider(EVM_RPC);
+    const finalKey = (privateKey && privateKey.trim()) ? privateKey.trim() : SPONSOR_KEY;
 
-    if (!privateKey || !privateKey.trim()) {
-      return { success: false, error: "Private key required for storage node replication." };
+    if (!finalKey) {
+      return { success: false, error: "No storage key available (User or Sponsor). Connect a wallet with a key or set 0G_SPONSOR_PRIVATE_KEY." };
     }
 
-    const signer = new ethers.Wallet(privateKey.trim(), provider);
-    console.log(`0G NODE UPLOAD: Wallet initialized for: ${signer.address}`);
+    const signer = new ethers.Wallet(finalKey, provider);
+    console.log(`0G NODE UPLOAD: Replication initiated by: ${signer.address}`);
 
     const indexer = new Indexer(INDEXER_RPC);
     const zgFile = await ZgFile.fromFilePath(tmpFile);
