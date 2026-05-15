@@ -20,6 +20,28 @@ export async function generateResearchReportAction(
 }
 
 /**
+ * Computes correct 0G Metadata (Root and Length) for a file.
+ * Using a server action allows us to use the Node-only SDK ZgFile safely.
+ */
+export async function get0GMetadataAction(content: string): Promise<{ root: string; length: number }> {
+  const tmpDir = join(process.cwd(), ".0g-tmp");
+  const tmpFile = join(tmpDir, `metadata-${Date.now()}.txt`);
+  
+  try {
+    mkdirSync(tmpDir, { recursive: true });
+    writeFileSync(tmpFile, content, "utf-8");
+    const zgFile = await ZgFile.fromFilePath(tmpFile);
+    const [root, length] = await zgFile.merkleRoot();
+    return { root, length: Number(length) };
+  } catch (error: unknown) {
+    console.error("0G Metadata Error:", error);
+    throw new Error("Failed to compute 0G storage metadata.");
+  } finally {
+    try { unlinkSync(tmpFile); } catch (_) {}
+  }
+}
+
+/**
  * Uploads file data to 0G storage nodes using the SDK.
  * This makes the file downloadable on StorageScan.
  * Must be called AFTER the on-chain Flow.submit succeeds.

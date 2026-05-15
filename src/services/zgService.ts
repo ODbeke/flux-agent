@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { get0GMetadataAction } from "../app/actions";
 
 export interface StorageUploadResult {
   contentHash: string; 
@@ -9,16 +10,7 @@ export interface StorageUploadResult {
   storageScanLink: string; 
 }
 
-/**
- * Computes the 0G Storage Merkle Root for a padded 256-byte sector.
- */
-export async function compute0GRoot(content: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(content);
-  const paddedData = new Uint8Array(256);
-  paddedData.set(data.slice(0, 256));
-  return ethers.keccak256(paddedData);
-}
+
 
 // The REAL ABI from the 0G SDK — the submit function takes a nested struct:
 // submit(Submission { data: SubmissionData { length, tags, nodes[] }, submitter })
@@ -50,7 +42,7 @@ export async function uploadToZeroGravityAndMint(
   const FLOW_ADDRESS = "0x62D4144dB0F0a6fBBaeb6296c785C71B3D57C526";
 
   onProgress?.("Generating 0G Merkle proof...");
-  const dataRoot = await compute0GRoot(content);
+  const { root: dataRoot, length: dataLength } = await get0GMetadataAction(content);
 
   let signer: ethers.Signer;
   let signerAddress: string;
@@ -84,8 +76,8 @@ export async function uploadToZeroGravityAndMint(
   // Build the CORRECT nested submission struct that matches the actual Flow contract
   const submission = {
     data: {
-      length: 256,                                        // Single sector
-      tags: "0x",                                         // tags is bytes, not address
+      length: dataLength,
+      tags: "0x",
       nodes: [{ root: dataRoot, height: 0 }]
     },
     submitter: signerAddress                               // REQUIRED field
