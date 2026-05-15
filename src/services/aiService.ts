@@ -20,7 +20,10 @@ Synthesize deep structured insights on the given query. Provide a report formatt
 4. Market Thesis & Value Capture Strategy
 5. Verifiable Cryptographic Anchor Validation
 
-Use professional, premium formatting with headers, bullet points, and code block formatting where appropriate.`;
+Use professional, premium formatting with headers, bullet points, and code block formatting where appropriate.
+
+IMPORTANT: Do NOT include any simulated report IDs, block numbers, or sync information at the bottom (e.g. FLUX_AGENT::REPORT_ID...). 
+Instead, always end the entire report with the single line: STATUS: VERIFIED`;
 
   const userPrompt = `Perform deep synthesis and evaluate the following topic: "${topic}"`;
 
