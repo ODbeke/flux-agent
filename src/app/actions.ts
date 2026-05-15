@@ -12,9 +12,10 @@ export async function generateResearchReportAction(
 ): Promise<ResearchReportResponse> {
   try {
     return await generateReportLib(topic, apiKey);
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("AI Action Error:", error);
-    throw new Error(error.message || "Failed to generate AI research report on server.");
+    const msg = error instanceof Error ? error.message : String(error);
+    throw new Error(msg || "Failed to generate AI research report on server.");
   }
 }
 
@@ -27,8 +28,8 @@ export async function uploadFileDataToNodes(
   content: string,
   privateKey: string
 ): Promise<{ success: boolean; error?: string }> {
-  const EVM_RPC = "https://evmrpc.0g.ai";
-  const INDEXER_RPC = "https://indexer-storage-turbo.0g.ai";
+  const EVM_RPC = process.env.NEXT_PUBLIC_0G_RPC || "https://evmrpc.0g.ai";
+  const INDEXER_RPC = process.env.NEXT_PUBLIC_0G_INDEXER || "https://indexer-storage-turbo.0g.ai";
 
   console.log("0G NODE UPLOAD: Starting file data upload to storage nodes...");
 
@@ -42,18 +43,18 @@ export async function uploadFileDataToNodes(
 
     const provider = new ethers.JsonRpcProvider(EVM_RPC);
 
-    if (!privateKey.trim()) {
-      return { success: false, error: "Private key required for full storage node replication." };
+    if (!privateKey || !privateKey.trim()) {
+      return { success: false, error: "Private key required for storage node replication." };
     }
 
     const signer = new ethers.Wallet(privateKey.trim(), provider);
-    console.log(`0G NODE UPLOAD: Wallet: ${signer.address}`);
+    console.log(`0G NODE UPLOAD: Wallet initialized for: ${signer.address}`);
 
     const indexer = new Indexer(INDEXER_RPC);
     const zgFile = await ZgFile.fromFilePath(tmpFile);
 
     console.log("0G NODE UPLOAD: Calling indexer.upload (full SDK pipeline)...");
-    const [txHash, uploadErr] = await indexer.upload(zgFile as any, EVM_RPC, signer);
+    const [txHash, uploadErr] = await indexer.upload(zgFile, EVM_RPC, signer);
 
     if (uploadErr) {
       console.error("0G NODE UPLOAD: Error:", uploadErr);
@@ -62,9 +63,9 @@ export async function uploadFileDataToNodes(
 
     console.log(`0G NODE UPLOAD: Success! Tx: ${txHash}`);
     return { success: true };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error("0G NODE UPLOAD: Fatal:", error);
-    return { success: false, error: error.message || "Unknown upload error" };
+    return { success: false, error: error instanceof Error ? error.message : "Unknown upload error" };
   } finally {
     // Clean up temp file
     try { unlinkSync(tmpFile); } catch (_) {}

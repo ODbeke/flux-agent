@@ -3,11 +3,9 @@ import {
   Key, 
   Wallet, 
   Settings2, 
-  Sparkles, 
   Code, 
   Eye, 
   EyeOff,
-  Sliders,
   CheckCircle2,
   Cpu,
   Copy,
@@ -31,7 +29,6 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
   privateKey,
   setPrivateKey,
   contractAddress,
-  setContractAddress,
   onConnectWallet,
   connectedAddress
 }) => {

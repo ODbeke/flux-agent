@@ -6,7 +6,6 @@ import {
   ShieldCheck, 
   Database, 
   Cpu, 
-  FileText,
   Layers
 } from "lucide-react";
 import { StorageUploadResult } from "../services/zgService";

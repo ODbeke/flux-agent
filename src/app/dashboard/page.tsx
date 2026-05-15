@@ -1,23 +1,19 @@
 "use client";
 
-import React, { useState } from "react";
-import Image from "next/image";
+import React, { useState, useEffect } from "react";
+
 import Link from "next/link";
 import { 
   Search, 
-  Sparkles, 
   Cpu, 
   Database, 
-  ExternalLink, 
-  Compass, 
-  Layers, 
   RefreshCw,
   FileText,
-  ShieldCheck,
+  ExternalLink,
   Sun,
-  Moon
+  Moon,
+  Compass,
 } from "lucide-react";
-import { useEffect } from "react";
 import { ConfigPanel } from "../../components/ConfigPanel";
 import { ExplorerView } from "../../components/ExplorerView";
 import { ResearchReportResponse } from "../../services/aiService";
@@ -154,9 +150,7 @@ export default function Home() {
   const [contractAddress, setContractAddress] = useState("0x6F772D147ccB8017Ed5f1817B35E96E70Ab9a288");
   const [walletSigner, setWalletSigner] = useState<ethers.JsonRpcSigner | null>(null);
   const [connectedAddress, setConnectedAddress] = useState("");
-  const [verifiedAgents, setVerifiedAgents] = useState<StorageUploadResult[]>([]);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [searchResult, setSearchResult] = useState<StorageUploadResult | null>(null);
+
 
   // Execution workflow tracking states
   const [isSynthesizing, setIsSynthesizing] = useState(false);
@@ -177,24 +171,25 @@ export default function Home() {
   };
 
   // Dynamic suggestion triggers with auto-shuffle
-  const ALL_SUGGESTIONS = [
-    "0G Permanent Data Scalability",
-    "DePIN compute resource allocation models",
-    "Deep Liquidity Staking protocols on 0G",
-    "Verifiable AI Inference pipeline",
-    "EVM-compatible storage anchoring",
-    "Decentralized GPU resource mapping",
-    "Cross-chain identity verification",
-    "Merkle Tree root validation",
-    "Proof of Data Availability consensus",
-    "Decentralized reasoning synthesis"
-  ];
+
 
   const [displaySuggestions, setDisplaySuggestions] = useState<string[]>([]);
 
   useEffect(() => {
+    const suggestions = [
+      "0G Permanent Data Scalability",
+      "DePIN compute resource allocation models",
+      "Deep Liquidity Staking protocols on 0G",
+      "Verifiable AI Inference pipeline",
+      "EVM-compatible storage anchoring",
+      "Decentralized GPU resource mapping",
+      "Cross-chain identity verification",
+      "Merkle Tree root validation",
+      "Proof of Data Availability consensus",
+      "Decentralized reasoning synthesis"
+    ];
     const shuffle = () => {
-      const shuffled = [...ALL_SUGGESTIONS].sort(() => Math.random() - 0.5);
+      const shuffled = [...suggestions].sort(() => Math.random() - 0.5);
       setDisplaySuggestions(shuffled.slice(0, 3));
     };
     shuffle();
@@ -203,18 +198,18 @@ export default function Home() {
   }, []);
 
   const connectWallet = async () => {
-    if (typeof window !== "undefined" && (window as any).ethereum) {
+    if (typeof window !== "undefined" && (window as { ethereum?: ethers.Eip1193Provider }).ethereum) {
       try {
-        const provider = new ethers.BrowserProvider((window as any).ethereum);
+        const provider = new ethers.BrowserProvider((window as { ethereum: ethers.Eip1193Provider }).ethereum);
         await provider.send("eth_requestAccounts", []);
         const signer = await provider.getSigner();
         const address = await signer.getAddress();
         setWalletSigner(signer);
         setConnectedAddress(address);
         setPrivateKey(""); // Clear private key if wallet is connected to avoid confusion
-      } catch (err: any) {
+      } catch (err: unknown) {
         console.error("Wallet connection failed:", err);
-        setErrorMsg("Failed to connect wallet: " + (err.message || "Unknown error"));
+        setErrorMsg("Failed to connect wallet: " + (err instanceof Error ? err.message : String(err)));
       }
     } else {
       setErrorMsg("MetaMask or compatible browser wallet not detected.");
@@ -265,26 +260,19 @@ export default function Home() {
         } else {
           console.warn("Node upload warning:", nodeResult.error);
         }
-      } catch (nodeErr) {
-        console.warn("Node upload failed (non-blocking):", nodeErr);
+      } catch (mintErr: unknown) {
+        console.warn("Agent mint failed (non-blocking):", mintErr);
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.error("Execution sequence failed:", err);
-      setErrorMsg(err.message || "An unexpected transaction or network validation exception occurred.");
+      setErrorMsg(err instanceof Error ? err.message : "An unexpected transaction or network validation exception occurred.");
     } finally {
       setIsSynthesizing(false);
       setIsUploading(false);
     }
   };
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    const found = verifiedAgents.find(a => a.agentId === searchQuery || a.mintTxHash === searchQuery);
-    setSearchResult(found || null);
-    if (!found) {
-      setErrorMsg("Agent ID not found in current session registry. In production, this would query the 0G Subgraph.");
-    }
-  };
+
 
   const handleSuggestionClick = (suggestionText: string) => {
     setTopic(suggestionText);

@@ -1,17 +1,13 @@
 "use client";
 
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { 
-  ArrowRight, 
-  Sparkles, 
+  ArrowRight,
   ShieldCheck, 
-  Database, 
-  Cpu, 
-  Layers,
-  Fingerprint,
-  ChevronRight
+  Database,
+  Cpu,
+  Fingerprint
 } from "lucide-react";
 
 export default function LandingPage() {
@@ -103,7 +99,7 @@ export default function LandingPage() {
             ].map((step, idx) => (
               <div key={idx} className="luxury-card p-8 rounded-2xl relative z-10 bg-white">
                 <div className={`w-14 h-14 rounded-xl ${step.color} flex items-center justify-center mb-6`}>
-                  {React.cloneElement(step.icon as React.ReactElement<any>, { className: "w-7 h-7" })}
+                  {React.cloneElement(step.icon as React.ReactElement<React.ComponentProps<"svg">>, { className: "w-7 h-7" })}
                 </div>
                 <h3 className="font-poppins font-bold text-xl mb-3">{step.title}</h3>
                 <p className="text-sm text-gray-500 leading-relaxed">{step.desc}</p>

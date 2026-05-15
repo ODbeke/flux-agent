@@ -51,7 +51,6 @@ export async function uploadToZeroGravityAndMint(
 
   onProgress?.("Generating 0G Merkle proof...");
   const dataRoot = await compute0GRoot(content);
-  const contentBytes = ethers.toUtf8Bytes(content);
 
   let signer: ethers.Signer;
   let signerAddress: string;
@@ -106,15 +105,16 @@ export async function uploadToZeroGravityAndMint(
     }
     storageTxHash = storageTx.hash;
     onProgress?.("✓ Storage indexed on 0G Network!");
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error("Flow.submit failed:", err);
-    throw new Error(`0G Storage submission failed: ${err.shortMessage || err.message}. Ensure your wallet has sufficient A0GI.`);
+    const msg = err instanceof Error ? (err as Record<string, unknown>).shortMessage as string || err.message : String(err);
+    throw new Error(`0G Storage submission failed: ${msg}. Ensure your wallet has sufficient A0GI.`);
   }
 
   // === STEP 2: Mint Agent ID on our registry ===
   onProgress?.("Step 2/2: Confirm Agent ID Mint...");
   let mintTxHash = storageTxHash; // fallback
-  let agentId = `AGENT-${Math.floor(Math.random() * 9000) + 1000}`;
+  const agentId = `AGENT-${Math.floor(Math.random() * 9000) + 1000}`;
   
   try {
     // Simple data-anchor transaction to our registry contract
@@ -126,7 +126,7 @@ export async function uploadToZeroGravityAndMint(
     await mintTx.wait();
     mintTxHash = mintTx.hash;
     onProgress?.("✓ Agent ID minted on 0G Chain!");
-  } catch (mintErr: any) {
+  } catch (mintErr: unknown) {
     console.warn("Agent mint failed (non-blocking):", mintErr);
     // Storage is already indexed — this is non-critical
   }

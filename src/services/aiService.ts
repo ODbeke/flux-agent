@@ -100,8 +100,8 @@ Instead, always end the entire report with the single line: STATUS: VERIFIED`;
           }
           continue;
         }
-      } catch (err: any) {
-        lastError = err.message;
+      } catch (err: unknown) {
+        lastError = err instanceof Error ? err.message : String(err);
         await sleep(1000);
         continue;
       }
