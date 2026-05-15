@@ -5,6 +5,7 @@ import { Indexer, ZgFile } from "@0gfoundation/0g-storage-ts-sdk";
 import { ethers } from "ethers";
 import { writeFileSync, unlinkSync, mkdirSync } from "fs";
 import { join } from "path";
+import { tmpdir } from "os";
 
 export async function generateResearchReportAction(
   topic: string,
@@ -24,11 +25,9 @@ export async function generateResearchReportAction(
  * Using a server action allows us to use the Node-only SDK ZgFile safely.
  */
 export async function get0GMetadataAction(content: string): Promise<{ root: string; length: number }> {
-  const tmpDir = join(process.cwd(), ".0g-tmp");
-  const tmpFile = join(tmpDir, `metadata-${Date.now()}.txt`);
+  const tmpFile = join(tmpdir(), `metadata-${Date.now()}.txt`);
   
   try {
-    mkdirSync(tmpDir, { recursive: true });
     writeFileSync(tmpFile, content, "utf-8");
     const zgFile = await ZgFile.fromFilePath(tmpFile);
     const [root, length] = await zgFile.merkleRoot();
@@ -56,11 +55,9 @@ export async function uploadFileDataToNodes(
   console.log("0G NODE UPLOAD: Starting file data upload to storage nodes...");
 
   // Write content to a temporary file (ZgFile requires a file path in Node.js)
-  const tmpDir = join(process.cwd(), ".0g-tmp");
-  const tmpFile = join(tmpDir, `flux-report-${Date.now()}.txt`);
+  const tmpFile = join(tmpdir(), `flux-report-${Date.now()}.txt`);
   
   try {
-    mkdirSync(tmpDir, { recursive: true });
     writeFileSync(tmpFile, content, "utf-8");
 
     const provider = new ethers.JsonRpcProvider(EVM_RPC);

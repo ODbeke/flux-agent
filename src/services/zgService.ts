@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-import { get0GMetadataAction } from "../app/actions";
 
 export interface StorageUploadResult {
   contentHash: string; 
@@ -9,8 +8,6 @@ export interface StorageUploadResult {
   explorerLink: string; 
   storageScanLink: string; 
 }
-
-
 
 // The REAL ABI from the 0G SDK — the submit function takes a nested struct:
 // submit(Submission { data: SubmissionData { length, tags, nodes[] }, submitter })
@@ -34,6 +31,8 @@ export async function uploadToZeroGravityAndMint(
   content: string,
   privateKey: string,
   contractAddress: string,
+  dataRoot: string,
+  dataLength: number,
   onProgress?: (step: string) => void,
   walletSigner?: ethers.JsonRpcSigner | null
 ): Promise<StorageUploadResult> {
@@ -41,8 +40,7 @@ export async function uploadToZeroGravityAndMint(
   const EVM_RPC = "https://evmrpc.0g.ai";
   const FLOW_ADDRESS = "0x62D4144dB0F0a6fBBaeb6296c785C71B3D57C526";
 
-  onProgress?.("Generating 0G Merkle proof...");
-  const { root: dataRoot, length: dataLength } = await get0GMetadataAction(content);
+  onProgress?.("Confirming 0G Storage Metadata...");
 
   let signer: ethers.Signer;
   let signerAddress: string;

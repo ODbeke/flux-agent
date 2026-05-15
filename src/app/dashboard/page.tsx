@@ -17,7 +17,7 @@ import {
 import { ConfigPanel } from "../../components/ConfigPanel";
 import { ExplorerView } from "../../components/ExplorerView";
 import { ResearchReportResponse } from "../../services/aiService";
-import { generateResearchReportAction, uploadFileDataToNodes } from "../actions";
+import { generateResearchReportAction, uploadFileDataToNodes, get0GMetadataAction } from "../actions";
 import { uploadToZeroGravityAndMint, StorageUploadResult } from "../../services/zgService";
 import { ethers } from "ethers";
 
@@ -239,10 +239,15 @@ export default function Home() {
       setIsSynthesizing(false);
       setIsUploading(true);
       
+      setCurrentStep("Computing 0G storage proofs...");
+      const metadata = await get0GMetadataAction(aiResponse.markdown);
+
       const zgResponse = await uploadToZeroGravityAndMint(
         aiResponse.markdown,
         privateKey,
         contractAddress,
+        metadata.root,
+        metadata.length,
         (progressStep) => setCurrentStep(progressStep),
         walletSigner
       );
