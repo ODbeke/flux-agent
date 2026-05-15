@@ -170,7 +170,7 @@ export const ConfigPanel: React.FC<ConfigPanelProps> = ({
               <span className="flex items-center gap-1.5">
                 <Key className="w-3.5 h-3.5 text-[#f59e0b]" /> Private Key
                 <span className="text-[9px] text-[#f59e0b] bg-[rgba(245,158,11,0.1)] px-1.5 py-0.5 rounded border border-[rgba(245,158,11,0.2)]">
-                  {connectedAddress ? "Optional" : "Required"}
+                  {connectedAddress ? "Optional" : "Recommended"}
                 </span>
               </span>
             </label>
