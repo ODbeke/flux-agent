@@ -229,10 +229,14 @@ export default function Home() {
     // Step 1: Execute AI synthesis pipeline
     setIsSynthesizing(true);
     try {
-      const aiResponse = await generateResearchReportAction(
+      const aiResponseResult = await generateResearchReportAction(
         topic, 
         apiKey
       );
+      if (aiResponseResult.error || !aiResponseResult.data) {
+        throw new Error(aiResponseResult.error || "Failed to generate report from 0G Network.");
+      }
+      const aiResponse = aiResponseResult.data;
       setReportData(aiResponse);
 
       // Step 2: Trigger storage indexing allocation and Agent ID minting sequence
@@ -240,7 +244,11 @@ export default function Home() {
       setIsUploading(true);
       
       setCurrentStep("Computing 0G storage proofs...");
-      const metadata = await get0GMetadataAction(aiResponse.markdown);
+      const metadataResult = await get0GMetadataAction(aiResponse.markdown);
+      if (metadataResult.error || !metadataResult.data) {
+        throw new Error(metadataResult.error || "Failed to compute 0G storage proofs.");
+      }
+      const metadata = metadataResult.data;
 
       const zgResponse = await uploadToZeroGravityAndMint(
         aiResponse.markdown,
